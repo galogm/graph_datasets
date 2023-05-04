@@ -1,0 +1,17 @@
+[tool.yapf]
+based_on_style = "facebook"
+indent_width = 4
+split_before_first_argument = true
+split_arguments_when_comma_terminated = true
+indent_dictionary_value = true
+column_limit = 100
+
+[tool.yapfignore]
+ignore_patterns = [
+".venv/**/*.py",
+"venv/**/*.py",
+]
+
+[tool.black]
+line-length = 100
+extend-exclude = """"""

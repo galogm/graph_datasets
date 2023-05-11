@@ -11,15 +11,20 @@
 # EOF
 
 # create and activate virtual environment
-python3.9 -m venv .venv
+# python3.9 -m venv .venv
 source .venv/bin/activate
 
 # update pip
-python -m pip install -U pip
+# python -m pip install -U pip
+
+# torch cuda 11.3
+python -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu113
+
+# dgl cuda 11.3
+python -m pip install  dgl -f https://data.dgl.ai/wheels/cu113/repo.html
+python -m pip install  dglgo -f https://data.dgl.ai/wheels-test/repo.html
 
 # install requirements
 python -m pip install -r requirements.txt
-
-pre-commit install
 
 echo install requirements successfully!

@@ -172,3 +172,6 @@ results/
 checkpoint/
 checkpoints/
 tmp/
+
+.vscode/*
+!.vscode/extensions.json

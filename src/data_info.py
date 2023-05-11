@@ -1,17 +1,21 @@
-"""Data information.
+"""Data source information.
 """
 # pylint:disable=duplicate-code
 import os
 
+#: Default directory for data saving.
 DEFAULT_DATA_DIR = os.path.abspath("./data")
 
-# paper [SDCN](https://github.com/bdy9527/SDCN)
+#: Downloading url of datasets in paper
+#: `SDCN <https://github.com/bdy9527/SDCN>`_.
 SDCN_URL = "https://github.com/bdy9527/SDCN/blob/da6bb007b7"
 
-# paper [CoLA](https://github.com/GRAND-Lab/CoLA)
+#: Downloading url of datasets in paper
+#: `CoLA <https://github.com/GRAND-Lab/CoLA>`_.
 COLA_URL = "https://github.com/GRAND-Lab/CoLA/blob/main"
 
-# paper [LINKX](https://github.com/CUAI/Non-Homophily-Large-Scale)
+#: Downloading url of datasets in paper
+#: `LINKX <https://github.com/CUAI/Non-Homophily-Large-Scale>`_.
 LINKX_URL = "https://github.com/CUAI/Non-Homophily-Large-Scale/blob/82f8f05c5c/data"
 LINKX_DRIVE_ID = {
     "snap-patents": "1ldh23TSY1PwXia6dU0MYcpyEgX-w3Hia",
@@ -24,9 +28,12 @@ LINKX_DRIVE_ID = {
     "twitch-gamer_edges": "1XLETC6dG3lVl7kDmytEJ52hvDMVdxnZ0",
 }
 
-# NOTE: main difference of dgl and pyG datasets
-# NOTE: - dgl has self-loops while pyG removes them.
-# NOTE: - dgl row normalizes features while pyG does not.
+#: Supported datasets of pyG.
+#:
+#: **NOTE**: main difference of dgl and pyG datasets
+#:
+#: - dgl has self-loops while pyG removes them.
+#: - dgl row normalizes features while pyG does not.
 PYG_DATASETS = [
     "cora",
     "citeseer",
@@ -45,6 +52,8 @@ PYG_DATASETS = [
     "physics",
     "wikics",
 ]
+
+#: Supported datasets of dgl.
 DGL_DATASETS = [
     "cora",
     "citeseer",
@@ -65,14 +74,20 @@ OGB_DATASETS = [
     "proteins",
     "papers100M",
 ]
+#: Datasets in paper
+#: `SDCN <https://github.com/bdy9527/SDCN>`_.
 SDCN_DATASETS = [
     "dblp",
     "acm",
 ]
+#: Datasets in paper
+#: `CoLA <https://github.com/GRAND-Lab/CoLA>`_.
 COLA_DATASETS = [
     "blogcatalog",
     "flickr",
 ]
+#: Datasets in paper
+#: `LINKX <https://github.com/CUAI/Non-Homophily-Large-Scale>`_.
 LINKX_DATASETS = [
     "snap-patents",
     "pokec",

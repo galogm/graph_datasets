@@ -175,3 +175,6 @@ tmp/
 
 .vscode/*
 !.vscode/extensions.json
+
+docs/_build
+docs/rst_tmp

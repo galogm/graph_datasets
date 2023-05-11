@@ -20,16 +20,19 @@ repos:
         entry: black
         language: system
         types: [python]
+        exclude: docs/*
     -   id: yapf
         name: yapf
         entry: yapf -r -i
         language: system
         types: [python]
+        exclude: docs/*
     -   id: pylint
         name: pylint
         entry: pylint
         language: system
         types: [python]
+        exclude: docs/*
     -   id: mdformat
         name: mdformat
         entry: mdformat

@@ -1,4 +1,10 @@
-# Template
+# Graph Datasets
+
+<div align="center">
+
+[![PYPI](https://img.shields.io/pypi/v/graph_datasets?style=flat)](https://pypi.org/project/graph-datasets/)  [![Latest Release](https://img.shields.io/github/v/tag/galogm/graph_datasets)](https://github.com/galogm/graph_datasets/tags)
+
+</div>
 
 ## Installation
 

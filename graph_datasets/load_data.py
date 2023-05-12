@@ -256,7 +256,7 @@ def load_dgl_data(
         dataset = getattr(dgl.data, dataset_map[dataset_name])(
             raw_dir=directory,
             force_reload=False,
-            verbosity=False,
+            verbose=False,
             transform=None,
             reverse_edge=False,
             reorder=False,
@@ -274,7 +274,7 @@ def load_dgl_data(
         dataset = getattr(dgl.data, dataset_map[dataset_name])(
             raw_dir=directory,
             force_reload=False,
-            verbosity=False,
+            verbose=False,
             transform=None,
         )
     else:

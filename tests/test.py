@@ -1,8 +1,9 @@
 """Test
 """
+# pylint:disable=duplicate-code
 import argparse
 
-from graph_datasets.load_data import load_data
+from graph_datasets import load_data
 
 
 def main():

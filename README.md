@@ -2,38 +2,39 @@
 
 ## Installation
 
-- pyvenv
+```sh
+$ python -m pip install graph_datasets
+```
 
-  - DEV
+## Usage
 
-  ```bash
-  # install cuda 11.3 if necessary
-  $ sudo bash scripts/cuda.sh
-  # see installation logs in logs/install.log
-  $ nohup bash scripts/install-dev.sh > logs/install-dev.log &
-  ```
+```python
+from graph_datasets import load_data
 
-  - PROD
+graph, label, n_clusters = load_data(
+    dataset_name='cora',
+    directory='./data',
+    source='pyg',
+    verbosity=1,
+)
+```
 
-  ```bash
-  # install cuda 11.3 if necessary
-  $ sudo bash scripts/cuda.sh
-  # see installation logs in logs/install.log
-  $ nohup bash scripts/install.sh > logs/install.log &
-  ```
+<!-- - DEV
+
+```bash
+# install cuda 11.3 if necessary
+$ sudo bash scripts/cuda.sh
+# see installation logs in logs/install.log
+$ nohup bash scripts/install-dev.sh && bash scripts/install.sh > logs/install-dev.log &
+```
+
+- PROD
+
+```bash
+# see installation logs in logs/install.log
+$ nohup bash scripts/install.sh > logs/install.log &
+``` -->
 
 ## Requirements
 
-- DEV
-
-```
-pre-commit >= 2.15.0
-pylint >= 2.11.1
-yapf >= 0.31.0
-black>=23.3.0
-mdformat>=0.7.16
-mdformat_gfm>=0.3.5
-mdformat_frontmatter>=2.0.1
-mdformat_footnote>=0.1.1
-virtualenv==20.0.33
-```
+See in `requirements-dev.txt` and `requirements.txt`.

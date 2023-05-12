@@ -1,3 +1,38 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "graph_datasets"
+version = "0.0.0"
+authors = [{ name = "galo.gm", email = "galo.gm.work@gmail.com" }]
+keywords = ["graph", "datasets"]
+description = "Load graph datasets."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "torch>=1.21.1",
+    "torch-geometric>=2.3.1",
+    "torchaudio>=0.12.1",
+    "torchvision>=0.13.1",
+    "dgl>=1.1.0",
+    "dglgo>=0.0.2",
+    "gdown>=4.7.1",
+    "wget>=3.2",
+    "texttable>=1.6.7",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/galogm/graph_datasets"
+"Bug Tracker" = "https://github.com/galogm/graph_datasets/issues"
+
+
 [tool.yapf]
 based_on_style = "facebook"
 indent_width = 4
@@ -7,11 +42,13 @@ indent_dictionary_value = true
 column_limit = 100
 
 [tool.yapfignore]
-ignore_patterns = [
-".venv/**/*.py",
-"venv/**/*.py",
-]
 
 [tool.black]
 line-length = 100
-extend-exclude = """"""
+
+[tool.semantic_release]
+version_variable = ["graph_datasets/__init__.py:__version__"]
+version_toml = "pyproject.toml:project.version"
+major_on_zero = false
+changelog_file = "CHANGELOG.md"
+build_command = "python -m build"

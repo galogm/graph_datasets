@@ -1,0 +1,28 @@
+name: Release
+on:
+  push:
+    branches:
+      - master
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7.16
+      - name: Install dependencies
+        run: bash scripts/install-dev.sh && bash scripts/install.sh
+      - name: Release
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "action@github.com"
+          source .venv/bin/activate && semantic-release publish -D commit_author="github-actions <action@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}

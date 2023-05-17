@@ -10,6 +10,10 @@ from typing import List
 import gdown
 from texttable import Texttable
 
+from .statistics import edge_homo
+from .statistics import node_homo
+from .statistics import statistics
+
 
 def format_value(value) -> Any:
     if f"{value}".isdecimal():

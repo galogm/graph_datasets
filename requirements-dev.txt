@@ -13,5 +13,3 @@ sphinx
 sphinx_copybutton
 sphinx_rtd_theme
 python-semantic-release
-build
-twine

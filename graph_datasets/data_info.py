@@ -30,8 +30,7 @@ LINKX_DRIVE_ID = {
 
 #: Supported datasets of pyG.
 #:
-#: **NOTE**: main difference of dgl and pyG datasets
-#:
+#: NOTE: main difference of dgl and pyG datasets
 #: - dgl has self-loops while pyG removes them.
 #: - dgl row normalizes features while pyG does not.
 PYG_DATASETS = [
@@ -110,3 +109,12 @@ LINKX_DATASETS = [
     "Johns Hopkins55",
     "Reed98",
 ]
+
+DATASETS = {
+    "pyg": PYG_DATASETS,
+    "dgl": DGL_DATASETS,
+    "ogb": OGB_DATASETS,
+    "sdcn": SDCN_DATASETS,
+    "cola": COLA_DATASETS,
+    "linkx": LINKX_DATASETS,
+}

@@ -82,26 +82,92 @@ def main():
         "n_clusters": 6,
         "eh_1h": 7,
         "nh_1h": 8,
-        "ie_1h": 9,
-        "bn_1h": 10,
-        "eh_2h": 11,
-        "nh_2h": 12,
-        "ie_2h": 13,
-        "bn_2h": 14,
+        "lh_1h": 9,
+        "ie_1h": 10,
+        "bn_1h": 11,
+        "eh_2h": 12,
+        "nh_2h": 13,
+        "lh_2h": 14,
+        "ie_2h": 15,
+        "bn_2h": 16,
+        "n_edges_2h": 17,
+        "eh_2h_uns": 18,
+        "nh_2h_uns": 19,
+        "lh_2h_uns": 20,
+        "ie_2h_uns": 21,
+        "bn_2h_uns": 22,
+        "n_edges_2h_uns": 23,
     }
     for source, datasets in DATASETS.items():
+        if source in [
+                # remove the comment of the name to enable its calculation
+                "pyg",
+                "dgl",
+                "ogb",
+                "sdcn",
+                "cola",
+                "linkx",
+        ]:
+            continue
         for dataset in datasets:
+            print(dataset)
+            if dataset in [
+                    # "products",
+                    "mag",
+                    "proteins",
+                    "papers100M",
+                    # "reddit",
+                    # "twitch-gamers",
+                    # "wiki",
+                    # "arxiv",
+                    # "cora",
+                    # "citeseer",
+                    # "pubmed",
+                    # "corafull",
+                    # "chameleon",
+                    # "squirrel",
+                    # "actor",
+                    # "film",
+                    # "cornell",
+                    # "texas",
+                    # "wisconsin",
+                    # "computers",
+                    # "photo",
+                    # "cs",
+                    # "physics",
+                    # "wikics",
+                    # "dblp",
+                    # "acm",
+                    # "blogcatalog",
+                    # "flickr",
+                    # "snap-patents",
+                    # "pokec",
+                    # "genius",
+                    # "arxiv-year",
+                    # "Penn94",
+                    # "yelp-chi",
+                    # "deezer-europe",
+                    # "Amherst41",
+                    # "Cornell5",
+                    # "Johns Hopkins55",
+                    # "Reed98",
+            ]:
+                continue
             graph, labels, n_clusters = load_data(
                 dataset_name=dataset,
                 verbosity=3,
                 source=source,
             )
-            dic = statistics(graph.adj(scipy_fmt="csr"), labels)
+
+            dic = {}
+
             dic["ds"] = dataset
             dic["src"] = source
             dic["n_nodes"], dic["n_feat"] = graph.ndata["feat"].shape
             dic["n_edges"] = graph.num_edges()
             dic["n_clusters"] = n_clusters
+
+            dic.update(statistics(graph, labels, dataset_name=dataset, h_1=False, h_2=True))
 
             csv2file(
                 target_path="results/stat.csv",

@@ -69,9 +69,9 @@ DGL_DATASETS = [
 OGB_DATASETS = [
     "products",
     "arxiv",
-    "mag",
-    "proteins",
-    "papers100M",
+    # "mag",
+    # "proteins",
+    # "papers100M",
 ]
 #: Datasets in paper
 #: `SDCN <https://github.com/bdy9527/SDCN>`_.

@@ -180,3 +180,4 @@ docs/_build
 docs/rst_tmp
 
 .python-version
+test.py

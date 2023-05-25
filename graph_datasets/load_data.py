@@ -50,6 +50,8 @@ def load_data(
     directory: str = DEFAULT_DATA_DIR,
     verbosity: int = 0,
     source: str = "pyg",
+    rm_self_loop: bool = True,
+    to_simple: bool = True,
 ) -> Tuple[dgl.DGLGraph, torch.Tensor, int]:
     """Load graphs.
 
@@ -60,6 +62,8 @@ def load_data(
         verbosity (int, optional): Output debug information. \
             The greater, the more detailed. Defaults to 0.
         source (str, optional): Source for data loading. Defaults to "pyg".
+        rm_self_loop (str, optional): Remove self loops. Defaults to True.
+        to_simple (str, optional): Convert to a simple graph with no duplicate undirected edges.
 
     Raises:
         NotImplementedError: Dataset unknown.
@@ -124,8 +128,10 @@ def load_data(
         )
 
     # remove self loop and turn graphs into undirected ones
-    graph = dgl.remove_self_loop(graph)
-    graph = dgl.to_bidirected(graph, copy_ndata=True)
+    if rm_self_loop:
+        graph = dgl.remove_self_loop(graph)
+    if to_simple:
+        graph = dgl.to_bidirected(graph, copy_ndata=True)
 
     # make label from 0
     uni = label.unique()

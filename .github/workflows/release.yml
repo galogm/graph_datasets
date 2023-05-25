@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: 3.7.16
       - name: Install dependencies
-        run: bash scripts/install-dev.sh && bash scripts/install.sh
+        run: bash .ci/install-dev.sh && bash .ci/install.sh
       - name: Release
         run: |
           git config --global user.name "github-actions"

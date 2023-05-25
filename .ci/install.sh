@@ -18,11 +18,13 @@ source .venv/bin/activate
 # # torch cuda 11.3
 python -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu113
 
-# # dgl cuda 11.3
-python -m pip install dgl>=1.1.0 -f https://data.dgl.ai/wheels/cu113/repo.html -i https://pypi.tuna.tsinghua.edu.cn/simple/
-python -m pip install dglgo -f https://data.dgl.ai/wheels-test/repo.html -i https://pypi.tuna.tsinghua.edu.cn/simple/
+# dgl cuda 11.3
+# add a source if prefered: -i https://pypi.tuna.tsinghua.edu.cn/simple/
+python -m pip install dgl>=1.1.0 -f https://data.dgl.ai/wheels/cu113/repo.html
+python -m pip install dglgo -f https://data.dgl.ai/wheels-test/repo.html
 
-# # install requirements
-python -m pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/
+# install requirements
+# add a source if prefered: -i https://pypi.tuna.tsinghua.edu.cn/simple/
+python -m pip install -r requirements.txt
 
 echo install requirements successfully!

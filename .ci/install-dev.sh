@@ -7,10 +7,12 @@ python3 -m venv .venv
 source .venv/bin/activate
 
 # update pip
-python -m pip install -U pip -i https://pypi.tuna.tsinghua.edu.cn/simple/
+# add a source if prefered: -i https://pypi.tuna.tsinghua.edu.cn/simple/
+python -m pip install -U pip
 
 # install requirements
-python -m pip install -r requirements-dev.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/
+# add a source if prefered: -i https://pypi.tuna.tsinghua.edu.cn/simple/
+python -m pip install -r requirements-dev.txt
 
 pre-commit install
 

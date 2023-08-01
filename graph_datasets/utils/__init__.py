@@ -58,6 +58,38 @@ def tab_printer(
     print(table.draw())
 
 
+def print_dataset_info(
+    dataset_name: str,
+    n_nodes: int,
+    n_edges: int,
+    n_feats: int,
+    n_clusters: int,
+    self_loops: int = None,
+    is_directed: bool = None,
+    thead: List[str] = None,
+) -> None:
+    dic = {
+        "NumNodes": n_nodes,
+        "NumEdges": n_edges,
+        "NumFeats": n_feats,
+        "NumClasses": n_clusters,
+        "Self-loops": self_loops,
+        "Directed": is_directed,
+    }
+
+    if self_loops is None:
+        dic.pop("Self-loops")
+    if is_directed is None:
+        dic.pop("Directed")
+
+    tab_printer(
+        dic,
+        thead=["Dataset", dataset_name] if thead is None else thead,
+        cols_align=["c", "r"],
+        sort=False,
+    )
+
+
 def bar_progress(current, total, _):
     """create this bar_progress method which is invoked automatically from wget"""
     progress_message = f"Downloading: {current / total * 100}% [{current} / {total}] bytes"

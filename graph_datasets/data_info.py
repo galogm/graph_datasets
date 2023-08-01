@@ -1,10 +1,8 @@
 """Data source information.
 """
 # pylint:disable=duplicate-code
-import os
-
 #: Default directory for data saving.
-DEFAULT_DATA_DIR = os.path.abspath("./data")
+DEFAULT_DATA_DIR = "./data"
 
 #: Downloading url of datasets in paper
 #: `SDCN <https://github.com/bdy9527/SDCN>`_.

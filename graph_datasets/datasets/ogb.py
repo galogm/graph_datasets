@@ -1,4 +1,4 @@
-"""Datasets from OBG
+"""Datasets from `OGB <https://github.com/snap-stanford/ogb>`_.
 """
 from typing import Tuple
 

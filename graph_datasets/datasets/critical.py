@@ -1,6 +1,7 @@
 """Datasets from the paper \
-    *A Critical Look at the Evaluation of GNNs Under Heterophily:\
-          Are We Really Making Progress?*
+    `A Critical Look at the Evaluation of GNNs Under Heterophily: \
+        Are We Really Making Progress?\
+              <https://openreview.net/pdf?id=tJbbQfw-5wv>`_.
 """
 import os
 from typing import Tuple

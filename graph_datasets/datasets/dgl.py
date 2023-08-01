@@ -1,4 +1,4 @@
-"""Datasets from DGL
+"""Datasets from `DGL <https://github.com/dmlc/dgl>`_.
 """
 from typing import Tuple
 

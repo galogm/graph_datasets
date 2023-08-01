@@ -14,18 +14,25 @@ Welcome to Graph Datasets' documentation!
 
 .. toctree::
    :maxdepth: 4
-   :caption: Graph Datasets
+   :caption: Loaders
    :glob:
 
    rst/load_data
+   rst/graph_datasets.datasets
+
+.. toctree::
+   :maxdepth: 4
+   :caption: Sources
+   :glob:
+
    rst/data_info
 
 .. toctree::
    :maxdepth: 4
-   :caption: utils
+   :caption: Utils
    :glob:
 
-   rst/src.utils
+   rst/graph_datasets.utils
 
 
 Index

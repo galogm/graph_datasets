@@ -1,4 +1,4 @@
-"""Datasets from the paper LINKX
+"""Datasets from the paper `LINKX <https://github.com/CUAI/Non-Homophily-Large-Scale>`_.
 """
 # pylint:disable=invalid-name,duplicate-code
 import os
@@ -134,7 +134,7 @@ def load_linkx_data(
 
     if verbosity and verbosity > 1:
         print_dataset_info(
-            dataset_name=f"Original {dataset_name}",
+            dataset_name=f"LINKX Original {dataset_name}",
             n_nodes=g.num_nodes(),
             n_edges=g.num_edges(),
             n_feats=g.ndata["feat"].shape[1],

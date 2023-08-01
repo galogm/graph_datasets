@@ -20,7 +20,7 @@ python -m pip install torch torchvision torchaudio --index-url https://download.
 
 # dgl cuda 11.3
 # add a source if prefered: -i https://pypi.tuna.tsinghua.edu.cn/simple/
-python -m pip install dgl>=1.1.0 -f https://data.dgl.ai/wheels/cu113/repo.html
+python -m pip install dgl=1.1.0 -f https://data.dgl.ai/wheels/cu113/repo.html
 python -m pip install dglgo -f https://data.dgl.ai/wheels-test/repo.html
 
 # install requirements

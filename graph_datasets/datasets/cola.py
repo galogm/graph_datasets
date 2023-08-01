@@ -1,4 +1,4 @@
-"""Datasets from the paper CoLA
+"""Datasets from the paper `CoLA <https://github.com/GRAND-Lab/CoLA>`_.
 """
 # pylint:disable=duplicate-code
 import os

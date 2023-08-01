@@ -1,7 +1,4 @@
 """Load Graph Datasets
-
-Example:
-    >>> python -m graph_datasets.load_data -d cora -s pyg -vv
 """
 # pylint:disable=protected-access
 import ssl
@@ -54,8 +51,16 @@ def load_data(
     Returns:
         Tuple[dgl.DGLGraph, torch.Tensor, int]: [graph, label, n_clusters]
 
-    Examples:
-        >>> graph, label, n_clusters = load_data('cora')
+    Example:
+        .. code-block:: python
+
+            from graph_datasets import load_data
+            graph, label, n_clusters = load_data(
+                dataset_name='cora',
+                directory="./data",
+                source='pyg',
+                verbosity=3,
+            )
     """
     dataset_name = (
         dataset_name.lower() if dataset_name not in [

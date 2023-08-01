@@ -1,6 +1,6 @@
 load_data
 ===========
-.. automodule:: src.load_data
+.. automodule:: graph_datasets.load_data
    :members:
    :undoc-members:
    :show-inheritance:

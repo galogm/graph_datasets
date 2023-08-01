@@ -1,4 +1,4 @@
-"""Datasets from the paper SDCN
+"""Datasets from the paper `SDCN <https://github.com/bdy9527/SDCN>`_.
 """
 import os
 from typing import Tuple

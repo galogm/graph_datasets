@@ -1,4 +1,4 @@
-"""Datasets from pyG
+"""Datasets from `PyG <https://github.com/pyg-team/pytorch_geometric>`_.
 """
 import os
 from typing import Tuple

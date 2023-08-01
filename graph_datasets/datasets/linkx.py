@@ -1,6 +1,6 @@
 """Datasets from the paper LINKX
 """
-# pylint:disable=invalid-name
+# pylint:disable=invalid-name,duplicate-code
 import os
 from typing import Tuple
 
@@ -19,8 +19,8 @@ from ..data_info import LINKX_DRIVE_ID
 from ..data_info import LINKX_URL
 from ..utils import bar_progress
 from ..utils import download_from_google_drive
+from ..utils import download_tip
 from ..utils import print_dataset_info
-from ..utils import tab_printer
 
 
 def even_quantile_labels(vals, n_classes, verbosity: int = 0):
@@ -167,7 +167,7 @@ def load_linkx_github(
             "Download URL": url,
             "Save Path": data_file,
         }
-        tab_printer(info)
+        download_tip(info)
         wget.download(url, out=data_file, bar=bar_progress)
 
     data_mat = sio.loadmat(data_file)
@@ -275,8 +275,7 @@ def load_twitch_gamers_data(
     nodes["created_at"] = nodes.created_at.replace("-", "", regex=True).astype(int)
     nodes["updated_at"] = nodes.updated_at.replace("-", "", regex=True).astype(int)
     one_hot = {k: v for v, k in enumerate(nodes["language"].unique())}
-    lang_encoding = [one_hot[lang] for lang in nodes["language"]]
-    nodes["language"] = lang_encoding
+    nodes["language"] = [one_hot[lang] for lang in nodes["language"]]
 
     if task is not None:
         label = torch.tensor(nodes[task].to_numpy())
@@ -308,11 +307,13 @@ def load_fb100_data(
 
     if not os.path.exists(data):
         url = f"{LINKX_URL}/facebook100/{dataset_name}.mat?raw=true"
-        tab_printer({
-            "File": os.path.basename(data),
-            "Download URL": url,
-            "Save Path": data,
-        })
+        download_tip(
+            info={
+                "File": os.path.basename(data),
+                "Download URL": url,
+                "Save Path": data,
+            }
+        )
         wget.download(url, out=data, bar=bar_progress)
 
     mat = sio.loadmat(data)

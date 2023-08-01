@@ -58,6 +58,19 @@ def tab_printer(
     print(table.draw())
 
 
+def download_tip(info: Dict) -> None:
+    """Tips for Downloading datasets
+
+    Args:
+        data_file (str): filepath.
+        url (str): url for downloading.
+    """
+    info["Tip"] = "If the download fails, \
+use the 'Download URL' to download manually and move the file to the 'Save Path'."
+
+    tab_printer(info)
+
+
 def print_dataset_info(
     dataset_name: str,
     n_nodes: int,
@@ -118,7 +131,7 @@ def download_from_google_drive(
             "Download URL": f"https://drive.google.com/uc?id={gid}",
             "Save Path": output,
         }
-        tab_printer(info)
+        download_tip(info)
 
     gdown.download(
         id=gid,

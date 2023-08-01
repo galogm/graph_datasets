@@ -11,6 +11,7 @@ import dgl
 import torch
 
 from .data_info import COLA_DATASETS
+from .data_info import CRITICAL_DATASETS
 from .data_info import DEFAULT_DATA_DIR
 from .data_info import DGL_DATASETS
 from .data_info import LINKX_DATASETS
@@ -18,6 +19,7 @@ from .data_info import OGB_DATASETS
 from .data_info import PYG_DATASETS
 from .data_info import SDCN_DATASETS
 from .datasets import load_cola_data
+from .datasets import load_critical_dataset
 from .datasets import load_dgl_data
 from .datasets import load_linkx_data
 from .datasets import load_ogb_data
@@ -99,6 +101,12 @@ def load_data(
         )
     elif source == "linkx" and dataset_name in LINKX_DATASETS:
         graph, label, n_clusters = load_linkx_data(
+            dataset_name=dataset_name,
+            directory=directory,
+            verbosity=verbosity,
+        )
+    elif source == "critical" and dataset_name in CRITICAL_DATASETS:
+        graph, label, n_clusters = load_critical_dataset(
             dataset_name=dataset_name,
             directory=directory,
             verbosity=verbosity,

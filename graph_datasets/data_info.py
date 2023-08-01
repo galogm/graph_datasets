@@ -28,6 +28,11 @@ LINKX_DRIVE_ID = {
     "twitch-gamer_edges": "1XLETC6dG3lVl7kDmytEJ52hvDMVdxnZ0",
 }
 
+#: Downloading url of datasets in paper
+#: `A Critical Look at the Evaluation of GNNs Under Heterophily:
+#: Are We Really Making Progress?* <https://openreview.net/pdf?id=tJbbQfw-5wv>`_.
+CRITICAL_URL = "https://github.com/yandex-research/heterophilous-graphs/blob/a431395/data"
+
 #: Supported datasets of pyG.
 #:
 #: NOTE: main difference of dgl and pyG datasets
@@ -110,6 +115,17 @@ LINKX_DATASETS = [
     "Reed98",
 ]
 
+#: Datasets in paper
+#: `A Critical Look at the Evaluation of GNNs Under Heterophily:
+#: Are We Really Making Progress?* <https://openreview.net/pdf?id=tJbbQfw-5wv>`_.
+CRITICAL_DATASETS = [
+    "roman-empire",
+    "amazon-ratings",
+    "minesweeper",
+    "tolokers",
+    "questions",
+]
+
 DATASETS = {
     "pyg": PYG_DATASETS,
     "dgl": DGL_DATASETS,
@@ -117,4 +133,5 @@ DATASETS = {
     "sdcn": SDCN_DATASETS,
     "cola": COLA_DATASETS,
     "linkx": LINKX_DATASETS,
+    "critical": CRITICAL_DATASETS,
 }

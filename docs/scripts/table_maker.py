@@ -3,8 +3,8 @@
 # pylint:disable=duplicate-code,line-too-long
 import re
 
-from texttable import Texttable
 import pandas as pd
+from texttable import Texttable
 
 from graph_datasets import load_data
 from graph_datasets.data_info import DATASETS
@@ -23,14 +23,14 @@ def main(_source, _dataset):
 
     global idx
     idx = idx + 1
-    n_nodes, n_feat = graph.ndata["feat"].shape
+    n_nodes, n_feats = graph.ndata["feat"].shape
     tbody.append(
         [
             idx,
             source,
             dataset,
             format_value(n_nodes),
-            format_value(n_feat),
+            format_value(n_feats),
             format_value(graph.num_edges()),
             format_value(n_clusters),
         ]
@@ -44,7 +44,7 @@ if __name__ == "__main__":
         'source',
         'dataset',
         'n_nodes',
-        'n_feat',
+        'n_feats',
         'n_edges',
         'n_clusters',
     ]

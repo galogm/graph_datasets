@@ -77,7 +77,7 @@ def main():
         "src": 1,
         "ds": 2,
         "n_nodes": 3,
-        "n_feat": 4,
+        "n_feats": 4,
         "n_edges": 5,
         "n_clusters": 6,
         "eh_1h": 7,
@@ -163,7 +163,7 @@ def main():
 
             dic["ds"] = dataset
             dic["src"] = source
-            dic["n_nodes"], dic["n_feat"] = graph.ndata["feat"].shape
+            dic["n_nodes"], dic["n_feats"] = graph.ndata["feat"].shape
             dic["n_edges"] = graph.num_edges()
             dic["n_clusters"] = n_clusters
 

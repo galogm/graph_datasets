@@ -43,7 +43,7 @@ $ nohup bash scripts/install.sh > logs/install.log &
 
 <!-- Statistics begins -->
 ## Statistics
-|   idx | source   | dataset         | n_nodes   | n_feat   | n_edges     |   n_clusters |
+|   idx | source   | dataset         | n_nodes   | n_feats   | n_edges     |   n_clusters |
 |------:|:---------|:----------------|:----------|:---------|:------------|-------------:|
 |     1 | pyg      | cora            | 2,708     | 1,433    | 10,556      |            7 |
 |     2 | pyg      | citeseer        | 3,327     | 3,703    | 9,104       |            6 |
@@ -106,4 +106,4 @@ $ nohup bash scripts/install.sh > logs/install.log &
 
 ## Requirements
 
-See in `requirements-dev.txt` and `requirements.txt`.
+See [requirements-dev.txt](./requirements-dev.txt) and [requirements.txt](./requirements.txt).

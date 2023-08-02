@@ -15,6 +15,7 @@ repos:
       rev: v3.9.0
       hooks:
           - id: reorder-python-imports
+            exclude: ^docs/
     - repo: local
       hooks:
           - id: black
@@ -41,4 +42,8 @@ repos:
             entry: mdformat
             language: system
             types: [markdown]
-            exclude: ^CHANGELOG.md
+            exclude: |
+                (?x)^(
+                    CHANGELOG.md|
+                    README.md
+                )$

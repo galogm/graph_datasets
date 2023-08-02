@@ -23,8 +23,8 @@ jobs:
 
       - name: Set user info
         run: |
-          git config --local user.name "github-actions"
-          git config --local user.email "action@github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       # This action uses Python Semantic Release v8
       - name: Python Semantic Release

@@ -8,9 +8,10 @@ Welcome to Graph Datasets' documentation!
 
 .. toctree::
    :maxdepth: 1
-   :caption: Get Started
-   :hidden:
+   :caption: Datasets
    :glob:
+
+   rst/table.rst
 
 .. toctree::
    :maxdepth: 4

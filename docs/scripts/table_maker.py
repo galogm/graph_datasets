@@ -17,7 +17,7 @@ def main(_source, _dataset):
         dataset_name=_dataset,
         directory="./data",
         source=_source,
-        verbosity=0,
+        verbosity=1,
     )
 
     global idx
@@ -52,6 +52,7 @@ if __name__ == "__main__":
     for source, datasets in DATASETS.items():
         for dataset in datasets:
             main(source, dataset)
+        break
 
     with open('./docs/rst/table.rst', 'w') as tf:
         tf.writelines("""

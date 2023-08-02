@@ -17,20 +17,22 @@ jobs:
         with:
           python-version: 3.7.16
       - name: Install dependencies
-        run: bash .ci/install-dev.sh && bash .ci/install.sh
-      - name: Update docs
+        run: bash .ci/install-dev.sh && bash .ci/install-cpu.sh
+      - name: Update table
         run: |
           git config --local user.name "github-actions"
           git config --local user.email "action@github.com"
           bash .ci/table_maker.sh
+      - name: Update docs
+        run: |
           bash .ci/docs.sh
+      - name: commit and push
+        run: |
           git add .
           git commit -m 'chore: update statistics' --no-verify
           git push origin master
       - name: Release
         run: |
-          git config --local user.name "github-actions"
-          git config --local user.email "action@github.com"
           source .venv/bin/activate && semantic-release publish -D commit_author="github-actions <action@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

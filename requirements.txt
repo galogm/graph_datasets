@@ -2,3 +2,5 @@ gdown
 wget
 torch_geometric
 texttable
+pandas
+tabulate

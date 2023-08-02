@@ -52,6 +52,7 @@ if __name__ == "__main__":
     for source, datasets in DATASETS.items():
         for dataset in datasets:
             main(source, dataset)
+        break
 
     with open('./docs/rst/table.rst', 'w') as tf:
         tf.writelines("""

@@ -1,18 +1,89 @@
-<!--next-version-placeholder-->
+# CHANGELOG
+
+
+
+## v0.3.0 (2023-08-02)
+
+### Chore
+
+* chore: remove build command, add github environment and activate env ([`b7e4009`](https://github.com/galogm/graph_datasets/commit/b7e4009c4d9a90ca74211348af7c31d375d2b76d))
+
+* chore: update actions ([`7afbb7b`](https://github.com/galogm/graph_datasets/commit/7afbb7b20bc149f8c31945cd2b40fc42d4a84cea))
+
+* chore: update statistics ([`6d9c80a`](https://github.com/galogm/graph_datasets/commit/6d9c80a9e9204bbe3c5a735ab589041c1d524496))
+
+* chore: update ci ([`a4f29e3`](https://github.com/galogm/graph_datasets/commit/a4f29e37d0646865e81404839a2ac2e75824cce8))
+
+* chore: auto-generate statistics ([`f9bd132`](https://github.com/galogm/graph_datasets/commit/f9bd1322d245c1699cf89b5a4ab586adbd9423e4))
+
+* chore: update docs ([`b50ee90`](https://github.com/galogm/graph_datasets/commit/b50ee90bb8debba293e47d32b7afd0124d07187a))
+
+### Feature
+
+* feat: add datasets from the paper *a critical look...* ([`68856dc`](https://github.com/galogm/graph_datasets/commit/68856dc39ea3b91afeef282cc7ad0ff4258f2c1d))
+
+### Refactor
+
+* refactor: split different sources ([`5e79f87`](https://github.com/galogm/graph_datasets/commit/5e79f8704eabf61c8131d7f04ca305ea2a7fd24c))
+
 
 ## v0.2.0 (2023-05-25)
+
+### Chore
+
+* chore: update ci scripts ([`c924e65`](https://github.com/galogm/graph_datasets/commit/c924e65a9fcfee37708bb8cc53de7b12e0138781))
+
+* chore: update install scripts for ci and add statistics scripts ([`dd6231b`](https://github.com/galogm/graph_datasets/commit/dd6231bdf059e8eb5600418dc873e068d08a75cf))
+
 ### Feature
-* Make it optional to remove self loops or convert to a simple graph ([`b2f751a`](https://github.com/galogm/graph_datasets/commit/b2f751add66597548863671f012c4cc428bcab17))
-* Add statistics for graph homophily metrics ([`3550814`](https://github.com/galogm/graph_datasets/commit/3550814fc17341e9b9b21bbef33be3cd173b3627))
+
+* feat: make it optional to remove self loops or convert to a simple graph ([`b2f751a`](https://github.com/galogm/graph_datasets/commit/b2f751add66597548863671f012c4cc428bcab17))
+
+* feat: add statistics for graph homophily metrics ([`3550814`](https://github.com/galogm/graph_datasets/commit/3550814fc17341e9b9b21bbef33be3cd173b3627))
+
+### Unknown
+
+* Merge pull request #2 from galogm/feat/0.1.3
+
+Feat/0.1.3 ([`f9058ca`](https://github.com/galogm/graph_datasets/commit/f9058ca294eeabfefec7f3066e04a5e5e460ae37))
+
 
 ## v0.1.2 (2023-05-12)
+
+### Chore
+
+* chore: update README, LISENCE and demos ([`b98713b`](https://github.com/galogm/graph_datasets/commit/b98713b861fe259160587c06c95559dc6a6baaaa))
+
 ### Fix
-* Load data import error ([`1d8ac40`](https://github.com/galogm/graph_datasets/commit/1d8ac4045cad4ff662cd67e7c51f7befbc1cf061))
+
+* fix: load data import error ([`1d8ac40`](https://github.com/galogm/graph_datasets/commit/1d8ac4045cad4ff662cd67e7c51f7befbc1cf061))
+
+### Unknown
+
+* Merge pull request #1 from galogm/fix/0.1.2
+
+Fix/0.1.2 ([`96f1c22`](https://github.com/galogm/graph_datasets/commit/96f1c226c8c11cdccdb36d2b303bb887b47acac7))
+
 
 ## v0.1.1 (2023-05-12)
+
 ### Fix
-* Fix DGL verbose and export load_data func ([`ea77e9c`](https://github.com/galogm/graph_datasets/commit/ea77e9ce6efc3deb871a90fcf3cb461340310ba6))
+
+* fix: fix DGL verbose and export load_data func ([`ea77e9c`](https://github.com/galogm/graph_datasets/commit/ea77e9ce6efc3deb871a90fcf3cb461340310ba6))
+
 
 ## v0.1.0 (2023-05-12)
+
+### Chore
+
+* chore: add build, twine and semantic-release ([`d5a042d`](https://github.com/galogm/graph_datasets/commit/d5a042d40e8d01c8f7f96623c68eb29f138a968c))
+
+* chore: add auto doc generation ([`67eb39c`](https://github.com/galogm/graph_datasets/commit/67eb39c8f184db5c1ab33b0f9ea57ef4ef04396f))
+
 ### Feature
-* Add pyg, dgl, ogb, sdcn, cola and linkx datasets ([`ebdc59a`](https://github.com/galogm/graph_datasets/commit/ebdc59ab6c3d27230f157291cb07a1baa619cf93))
+
+* feat: add pyg, dgl, ogb, sdcn, cola and linkx datasets ([`ebdc59a`](https://github.com/galogm/graph_datasets/commit/ebdc59ab6c3d27230f157291cb07a1baa619cf93))
+
+### Unknown
+
+* Initial commit ([`71c50cb`](https://github.com/galogm/graph_datasets/commit/71c50cb1d707640e309c1589157cf88d3c04a358))

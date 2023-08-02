@@ -57,6 +57,8 @@ def tab_printer(
 
     print(table.draw())
 
+    return table.draw()
+
 
 def download_tip(info: Dict) -> None:
     """Tips for Downloading datasets

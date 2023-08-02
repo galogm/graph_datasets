@@ -7,9 +7,11 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    environment: publish
     concurrency: release
     permissions:
       id-token: write
+      contents: write
 
     steps:
       - uses: actions/checkout@v3
@@ -18,8 +20,11 @@ jobs:
       - uses: actions/setup-python@v4
         with:
             python-version: '3.7.16'
-      - name: Install dependencies
-        run: bash .ci/install-dev.sh && bash .ci/install-cpu.sh
+
+      - name: Set user info
+        run: |
+          git config --local user.name "github-actions"
+          git config --local user.email "action@github.com"
 
       # This action uses Python Semantic Release v8
       - name: Python Semantic Release
@@ -28,17 +33,23 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Publish package distributions to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-        # NOTE: DO NOT wrap the conditional in ${{ }} as it will always evaluate to true.
-        # See https://github.com/actions/runner/issues/1173
-        if: steps.release.outputs.released == 'true'
-
       - name: Publish package distributions to GitHub Releases
         uses: python-semantic-release/upload-to-gh-release@main
         if: steps.release.outputs.released == 'true'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build
+        run: |
+          bash .ci/install-dev.sh && bash .ci/install-cpu.sh
+          source .venv/bin/activate
+          python -m build
+
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        # NOTE: DO NOT wrap the conditional in ${{ }} as it will always evaluate to true.
+        # See https://github.com/actions/runner/issues/1173
+        if: steps.release.outputs.released == 'true'
 
 # jobs:
 #   release:

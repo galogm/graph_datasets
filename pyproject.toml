@@ -51,4 +51,4 @@ version_variables = ["graph_datasets/__init__.py:__version__"]
 version_toml = ["pyproject.toml:project.version"]
 major_on_zero = false
 changelog_file = "CHANGELOG.md"
-build_command = "python -m build"
+# build_command = "python -m build"

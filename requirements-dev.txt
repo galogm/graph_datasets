@@ -14,4 +14,3 @@ sphinx_copybutton
 sphinx_rtd_theme
 python-semantic-release>=8.0.0
 build
-twine

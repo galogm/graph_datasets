@@ -2,6 +2,13 @@
 
 
 
+## v0.3.1 (2023-08-02)
+
+### Fix
+
+* fix: update toml settings and several val names &amp; configs ([`2e101d2`](https://github.com/galogm/graph_datasets/commit/2e101d2b3a018c08d99374e6b0ee67c5cca706ea))
+
+
 ## v0.3.0 (2023-08-02)
 
 ### Chore

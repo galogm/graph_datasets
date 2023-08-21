@@ -17,11 +17,11 @@ sys.path.insert(0, os.path.abspath('../'))
 # -- Project information -----------------------------------------------------
 
 project = 'Graph Datasets'
-copyright = '2023, EAGLE-Lab, Zhejiang University'
+copyright = '2023, Galo.gm'
 author = 'Galo.gm'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.1'
+release = '0.4.0'
 
 
 # -- General configuration ---------------------------------------------------

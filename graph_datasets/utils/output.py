@@ -51,6 +51,7 @@ def csv2file(
 
     Example:
         .. code-block:: python
+
             from graph_datasets import csv2file
             save_file = "./results/example.csv"
             final_params = {

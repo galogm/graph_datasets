@@ -26,10 +26,19 @@ from .statistics import statistics
 
 
 def get_str_time():
+    """Return localtime in the format of "%m%d%H%M%S"."""
     return time.strftime("%m%d%H%M%S", time.localtime())
 
 
 def format_value(value) -> Any:
+    """Return number as string with comma split.
+
+    Args:
+        value (int): number.
+
+    Returns:
+        str: string of the number with comma split.
+    """
     if f"{value}".isdecimal():
         return f"{value:,}"
     return value
@@ -45,8 +54,17 @@ def tab_printer(
 ) -> None:
     """Function to print the logs in a nice tabular format.
 
+
     Args:
-        args (Dict): Parameters used for the model.
+        args (Dict): value dict.
+        thead (List[str], optional): table head. Defaults to None.
+        cols_align (List[str], optional): horizontal alignment of the columns. Defaults to None.
+        cols_valign (List[str], optional): vertical alignment of the columns. Defaults to None.
+        cols_dtype (List[str], optional): value types of the columns. Defaults to None.
+        sort (bool, optional): whether to sort the keys. Defaults to True.
+
+    Returns:
+        str: table string to print.
     """
     args = vars(args) if hasattr(args, "__dict__") else args
     keys = sorted(args.keys()) if sort else args.keys()

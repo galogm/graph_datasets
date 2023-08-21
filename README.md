@@ -13,6 +13,7 @@ $ python -m pip install graph_datasets
 ```
 
 ## Usage
+See [Graph Datasets](https://galogm.github.io/graph_datasets_docs) for docs.
 
 ```python
 from graph_datasets import load_data

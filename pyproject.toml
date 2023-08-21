@@ -47,7 +47,7 @@ column_limit = 100
 line-length = 100
 
 [tool.semantic_release]
-version_variables = ["graph_datasets/__init__.py:__version__"]
+version_variables = ["graph_datasets/__init__.py:__version__", "docs/conf.py:release"]
 version_toml = ["pyproject.toml:project.version"]
 major_on_zero = false
 changelog_file = "CHANGELOG.md"

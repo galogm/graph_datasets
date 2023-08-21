@@ -60,12 +60,28 @@ def csv2file(
                 "NMI": "89.0",
             }
             thead=[]
+            # list of values
             csv2file(
                 target_path=save_file,
                 thead=list(final_params.keys()),
                 tbody=list(final_params.values()),
                 refresh=False,
                 is_dict=False,
+            )
+            # list of dicts
+            csv2file(
+                target_path=save_file,
+                tbody=[
+                    {
+                        "a": 1,
+                        "b": 2
+                    },
+                    {
+                        "a": 2,
+                        "b": 1
+                    },
+                ],
+                is_dict=True,
             )
     """
     target_path: PurePath = Path(target_path)

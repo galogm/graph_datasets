@@ -1,0 +1,3 @@
+[submodule "doc_repo"]
+	path = doc_repo
+	url = ../graph_datasets_docs

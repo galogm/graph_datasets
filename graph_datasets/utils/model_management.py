@@ -85,11 +85,14 @@ def load_model(
 def set_seed(seed: int = 4096) -> None:
     """Set random seed.
 
-    NOTE:!!! conv and neighborSampler of dgl is somehow nondeterministic !!!
+    NOTE:
+        !!! `conv` and `neighborSampler` of dgl are somehow nondeterministic !!!
 
-    Set according to the pytorch doc: https://pytorch.org/docs/1.9.0/notes/randomness.html
-    cudatoolkit doc: https://docs.nvidia.com/cuda/cublas/index.html#cublasApi_reproducibility
-    dgl issue: https://github.com/dmlc/dgl/issues/3302
+        Set seeds according to:
+            - `pytorch doc <https://pytorch.org/docs/1.9.0/notes/randomness.html>`_
+            - `cudatoolkit doc \
+                <https://docs.nvidia.com/cuda/cublas/index.html#cublasApi_reproducibility>`_
+            - `dgl issue <https://github.com/dmlc/dgl/issues/3302>`_
 
     Args:
         seed (int, optional): random seed. Defaults to 4096.

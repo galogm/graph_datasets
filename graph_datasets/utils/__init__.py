@@ -3,6 +3,7 @@
 # pylint:disable=invalid-name
 import os
 import sys
+import time
 from typing import Any
 from typing import Dict
 from typing import List
@@ -10,9 +11,22 @@ from typing import List
 import gdown
 from texttable import Texttable
 
+from .model_management import check_modelfile_exists
+from .model_management import get_modelfile_path
+from .model_management import load_model
+from .model_management import save_model
+from .model_management import set_device
+from .model_management import set_seed
+from .output import csv2file
+from .output import make_parent_dirs
+from .output import refresh_file
 from .statistics import edge_homo
 from .statistics import node_homo
 from .statistics import statistics
+
+
+def get_str_time():
+    return time.strftime("%m%d%H%M%S", time.localtime())
 
 
 def format_value(value) -> Any:

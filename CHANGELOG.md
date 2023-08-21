@@ -2,6 +2,23 @@
 
 
 
+## v0.4.0 (2023-08-21)
+
+### Chore
+
+* chore: update statistics ([`efe2765`](https://github.com/galogm/graph_datasets/commit/efe2765c4f75e7f89f7e696cc101d417e7f6b8d8))
+
+### Feature
+
+* feat: add output and model management utils ([`e717ce1`](https://github.com/galogm/graph_datasets/commit/e717ce103de562758179466048fff3b068ef84dc))
+
+### Unknown
+
+* Merge pull request #13 from galogm/feat/0.4.0
+
+Feat/0.4.0 ([`6cc6239`](https://github.com/galogm/graph_datasets/commit/6cc623905ffb49fa9fe1c12552af53d34c69e88d))
+
+
 ## v0.3.1 (2023-08-02)
 
 ### Fix

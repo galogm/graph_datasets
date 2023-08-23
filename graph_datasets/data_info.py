@@ -33,9 +33,10 @@ CRITICAL_URL = "https://github.com/yandex-research/heterophilous-graphs/blob/a43
 
 #: Supported datasets of pyG.
 #:
-#: NOTE: main difference of dgl and pyG datasets
-#: - dgl has self-loops while pyG removes them.
-#: - dgl row normalizes features while pyG does not.
+#: NOTE:
+#:      main difference of dgl and pyG datasets
+#:          - dgl has self-loops while pyG removes them.
+#:          - dgl row normalizes features while pyG does not.
 PYG_DATASETS = [
     "cora",
     "citeseer",

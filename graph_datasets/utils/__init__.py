@@ -23,7 +23,8 @@ from .output import refresh_file
 from .statistics import edge_homo
 from .statistics import node_homo
 from .statistics import statistics
-
+from .evaluation.eval import evaluate_embed_file
+from .evaluation.eval import save_to_csv_files
 
 def get_str_time():
     """Return localtime in the format of "%m%d%H%M%S"."""

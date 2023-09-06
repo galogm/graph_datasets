@@ -2,6 +2,8 @@
 """
 # pylint: disable=invalid-name,too-many-locals
 import os
+from typing import Dict
+from typing import Tuple
 
 import torch
 
@@ -26,7 +28,7 @@ def evaluate_from_embed_file(
     data_file: str,
     save_path: str = "./tmp/",
     quiet: bool = True,
-):
+) -> Tuple[Dict, Dict]:
     """Evaluation of representation quality using clustering and classification tasks.
 
     Args:
@@ -36,18 +38,22 @@ def evaluate_from_embed_file(
         quiet (bool, optional): Whether to print results. Defaults to True.
 
     Returns:
-        tuple: Two dicts are included, \
+        Tuple[Dict, Dict]: Two dicts are included, \
             which are the evaluation results of clustering and classification.
 
-    Example:'''
-        method_name='orderedgnn' # 'selene' 'greet' 'hgrl' 'nwr-gae' 'orderedgnn'
-        data_name='texas' # 'actor' 'chameleon' 'cornell' 'squirrel' 'texas' 'wisconsin'
-        print(method_name, data_name)
+    Example:
+        .. code-block:: python
 
-        clu_res, cls_res = evaluate_embed_file(
-            f'{data_name}_{method_name}_embeds.pth', f'{data_name}_data.pth', save_path='./save/')
-        print(clu_res, cls_res)
-    '''
+            from graph_datasets import evaluate_embed_file
+
+            method_name='orderedgnn'
+            data_name='texas'
+
+            clustering_res, classification_res = evaluate_embed_file(
+                f'{data_name}_{method_name}_embeds.pth',
+                f'{data_name}_data.pth',
+                save_path='./save/',
+            )
     """
     embedding_file = os.path.join(save_path, embedding_file)
     data_file = os.path.join(save_path, data_file)
@@ -110,19 +116,24 @@ def save_to_csv_files(
         csv_name (str): csv file name to store.
         save_path (str, optional): Folder path to store. Defaults to './results'.
 
-    Example:'''
-        method_name='orderedgnn' # 'selene' 'greet' 'hgrl' 'nwr-gae' 'orderedgnn'
-        data_name='texas' # 'actor' 'chameleon' 'cornell' 'squirrel' 'texas' 'wisconsin'
-        print(method_name, data_name)
+    Example:
+        .. code-block:: python
 
-        clu_res, cls_res = evaluate_embed_file(
-            f'{data_name}_{method_name}_embeds.pth', f'{data_name}_data.pth', save_path='./save/')
-        print(clu_res, cls_res)
+            from graph_datasets import evaluate_embed_file
+            from graph_datasets import save_to_csv_files
 
-        add_info = {'data': data_name, 'method': method_name,}
-        save_to_csv_files(clu_res, add_info, 'clutering.csv')
-        save_to_csv_files(cls_res, add_info, 'classification.csv')
-    '''
+            method_name='orderedgnn'
+            data_name='texas'
+
+            clustering_res, classification_res = evaluate_embed_file(
+                f'{data_name}_{method_name}_embeds.pth',
+                f'{data_name}_data.pth',
+                save_path='./save/',
+            )
+
+            add_info = {'data': data_name, 'method': method_name,}
+            save_to_csv_files(clustering_res, add_info, 'clutering.csv')
+            save_to_csv_files(classification_res, add_info, 'classification.csv')
     """
     # save to csv file
     results.update(add_info)

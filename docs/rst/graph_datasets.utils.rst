@@ -1,6 +1,14 @@
 utils
 ======================
 
+evaluation
+------------
+.. automodule:: graph_datasets.utils.evaluation.evaluation
+   :members:
+   :show-inheritance:
+   :exclude-members:
+   :no-undoc-members:
+
 statistics
 ------------
 .. automodule:: graph_datasets.utils.statistics
@@ -25,7 +33,7 @@ output
 
 common
 -------
-.. automodule:: graph_datasets.utils
+.. automodule:: graph_datasets.utils.common
    :members:
    :show-inheritance:
    :exclude-members: format_value, print_dataset_info, download_tip, bar_progress

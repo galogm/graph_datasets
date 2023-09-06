@@ -2,6 +2,45 @@
 
 
 
+## v0.5.0 (2023-09-06)
+
+### Chore
+
+* chore: update docs ([`3ff88d6`](https://github.com/galogm/graph_datasets/commit/3ff88d6fc07bbfb8a82c2b777afc6ef201835922))
+
+* chore: update docstring ([`d35e5bc`](https://github.com/galogm/graph_datasets/commit/d35e5bc5937c507907975f6d3b1c4cf88d332670))
+
+* chore: add doc repo as submodule ([`4ef0cbd`](https://github.com/galogm/graph_datasets/commit/4ef0cbd62feeb4b5eadbacff95128deae344b530))
+
+* chore: update docs ([`3e55ac2`](https://github.com/galogm/graph_datasets/commit/3e55ac27314e76a46cad9b398ef164d741af7f8c))
+
+### Feature
+
+* feat: add evaluation utils for node clustering and classification ([`3778c1c`](https://github.com/galogm/graph_datasets/commit/3778c1c0b8321e00aa492e58804c418baa789a79))
+
+### Fix
+
+* fix: update evaluation utils and ci scripts ([`f307a01`](https://github.com/galogm/graph_datasets/commit/f307a01720f0fafc341da937b67adc7b9da3dca2))
+
+### Unknown
+
+* Merge pull request #19 from galogm/feat/0.5.0
+
+Feat/0.5.0 ([`9e2f261`](https://github.com/galogm/graph_datasets/commit/9e2f26165241b8daaf565a36365e90de885d8ceb))
+
+* Merge pull request #18 from BabelTower/master
+
+feat: add eval func ([`f003406`](https://github.com/galogm/graph_datasets/commit/f003406bf2c65a83b43d7c8a3c59d93c1be6b65d))
+
+* Merge pull request #15 from galogm/feat/0.5.0
+
+chore: add doc repo as submodule ([`6628a6a`](https://github.com/galogm/graph_datasets/commit/6628a6a116570064a80d751604071cf371af18c5))
+
+* Merge pull request #14 from galogm/feat/0.5.0
+
+chore: update docs ([`6825929`](https://github.com/galogm/graph_datasets/commit/6825929f9a00e1a653451f9fa0d60fe0c0ac9665))
+
+
 ## v0.4.0 (2023-08-21)
 
 ### Chore

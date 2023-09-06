@@ -1,4 +1,4 @@
-statistics
+dataset cheatsheet
 ===========
 +-----+----------+-------------+-----------+---------+------------+------------+
 | idx |  source  |   dataset   |  n_nodes  | n_feats |  n_edges   | n_clusters |

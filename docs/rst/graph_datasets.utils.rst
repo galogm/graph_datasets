@@ -1,16 +1,13 @@
-utils
-======================
-
 evaluation
-------------
+======================
 .. automodule:: graph_datasets.utils.evaluation.evaluation
    :members:
    :show-inheritance:
-   :exclude-members:
+   :exclude-members: save_to_csv_files
    :no-undoc-members:
 
 statistics
-------------
+======================
 .. automodule:: graph_datasets.utils.statistics
    :members:
    :show-inheritance:
@@ -18,21 +15,21 @@ statistics
    :no-undoc-members:
 
 model management
------------------
+======================
 .. automodule:: graph_datasets.utils.model_management
    :members:
    :show-inheritance:
    :no-undoc-members:
 
 output
--------
+======================
 .. automodule:: graph_datasets.utils.output
    :members:
    :show-inheritance:
    :no-undoc-members:
 
 common
--------
+======================
 .. automodule:: graph_datasets.utils.common
    :members:
    :show-inheritance:

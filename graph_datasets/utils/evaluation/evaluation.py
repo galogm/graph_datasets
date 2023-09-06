@@ -44,12 +44,12 @@ def evaluate_from_embed_file(
     Example:
         .. code-block:: python
 
-            from graph_datasets import evaluate_embed_file
+            from graph_datasets import evaluate_from_embed_file
 
             method_name='orderedgnn'
             data_name='texas'
 
-            clustering_res, classification_res = evaluate_embed_file(
+            clustering_res, classification_res = evaluate_from_embed_file(
                 f'{data_name}_{method_name}_embeds.pth',
                 f'{data_name}_data.pth',
                 save_path='./save/',
@@ -107,7 +107,7 @@ def save_to_csv_files(
     add_info: dict,
     csv_name: str,
     save_path="./results",
-):
+) -> None:
     """Save the evaluation results to a local csv file.
 
     Args:
@@ -119,13 +119,13 @@ def save_to_csv_files(
     Example:
         .. code-block:: python
 
-            from graph_datasets import evaluate_embed_file
+            from graph_datasets import evaluate_from_embed_file
             from graph_datasets import save_to_csv_files
 
             method_name='orderedgnn'
             data_name='texas'
 
-            clustering_res, classification_res = evaluate_embed_file(
+            clustering_res, classification_res = evaluate_from_embed_file(
                 f'{data_name}_{method_name}_embeds.pth',
                 f'{data_name}_data.pth',
                 save_path='./save/',

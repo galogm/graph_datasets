@@ -16,7 +16,7 @@ source .venv/bin/activate
 # python -m pip install -U pip
 
 # # torch cuda 11.3
-python -m pip install torch==1.10.2 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu113
+python -m pip install torch==1.12 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu113
 
 # dgl cuda 11.3
 # add a source if prefered: -i https://pypi.tuna.tsinghua.edu.cn/simple/

@@ -28,7 +28,8 @@ def load_sdcn_data(
         verbosity (int, optional): Output debug information. \
             The greater, the more detailed. Defaults to 0.
 
-    NOTE: The last node of DBLP is an isolated node.
+    NOTE:
+        The last node of DBLP is an isolated node.
 
     Returns:
         Tuple[dgl.DGLGraph, torch.Tensor, int]: [graph, label, n_clusters]

@@ -1,3 +1,5 @@
+rm -rf .venv
+
 # # install python 3.7.16 use pyenv
 # pyenv install 3.7.16
 # pyenv local 3.7.16

@@ -1,6 +1,8 @@
 gdown
 wget
-torch_geometric
+torch>=1.12
+torch_geometric>=2.0
 texttable
 pandas
 tabulate
+munkres

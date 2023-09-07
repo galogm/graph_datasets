@@ -104,3 +104,49 @@ def csv2file(
                     dict_writer.writerow(elem)
             else:
                 csv_write.writerow(tbody)
+
+
+def save_to_csv_files(
+    results: dict,
+    add_info: dict,
+    csv_name: str,
+    save_path="./results",
+) -> None:
+    """Save the evaluation results to a local csv file.
+
+    Args:
+        results (dict): Evaluation results document.
+        add_info (dict): Additional information, such as data set name, method name.
+        csv_name (str): csv file name to store.
+        save_path (str, optional): Folder path to store. Defaults to './results'.
+
+    Example:
+        .. code-block:: python
+
+            from graph_datasets import evaluate_from_embed_file
+            from graph_datasets import save_to_csv_files
+
+            method_name='orderedgnn'
+            data_name='texas'
+
+            clustering_res, classification_res = evaluate_from_embed_file(
+                f'{data_name}_{method_name}_embeds.pth',
+                f'{data_name}_data.pth',
+                save_path='./save/',
+            )
+
+            add_info = {'data': data_name, 'method': method_name,}
+            save_to_csv_files(clustering_res, add_info, 'clutering.csv')
+            save_to_csv_files(classification_res, add_info, 'classification.csv')
+    """
+    # save to csv file
+    results.update(add_info)
+
+    # list of values
+    csv2file(
+        target_path=os.path.join(save_path, csv_name),
+        thead=list(results.keys()),
+        tbody=list(results.values()),
+        refresh=False,
+        is_dict=False,
+    )

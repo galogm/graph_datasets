@@ -2,6 +2,25 @@
 
 
 
+## v0.5.1 (2023-09-07)
+
+### Chore
+
+* chore: updsate docs &amp; config &amp; readme and add CONTRIBUTING.md ([`f88b306`](https://github.com/galogm/graph_datasets/commit/f88b306f73d5b4c65c3d31abeeffb37716357b76))
+
+### Fix
+
+* fix: move save_to_csv_files into output utils ([`0192074`](https://github.com/galogm/graph_datasets/commit/0192074cae58fe417dbf2806e11edd3d4fc67803))
+
+* fix: fix wrong critical datasets url ([`da518af`](https://github.com/galogm/graph_datasets/commit/da518afe2045111dd4edb634c1e6c719d3edb65c))
+
+### Unknown
+
+* Merge pull request #20 from galogm/feat/0.5.1
+
+Feat/0.5.1 ([`52658bf`](https://github.com/galogm/graph_datasets/commit/52658bfbeb16f4d17b0d65c3277fe381cfe8bd12))
+
+
 ## v0.5.0 (2023-09-06)
 
 ### Chore

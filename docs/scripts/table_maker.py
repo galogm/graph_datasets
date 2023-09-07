@@ -26,7 +26,7 @@ def main(_source, _dataset):
     n_nodes, n_feats = graph.ndata["feat"].shape
     tbody.append(
         [
-            idx,
+            format_value(idx),
             source,
             dataset,
             format_value(n_nodes),
@@ -49,15 +49,43 @@ if __name__ == "__main__":
         'n_clusters',
     ]
     tbody = []
-    table.set_cols_dtype(['i', 't', 't', 'i', 'i', 'i', 'i'])
-    table.set_cols_align(['r', 'c', 'c', 'r', 'r', 'r', 'r'])
+    cols_dtype = ['i', 't', 't', 'i', 'i', 'i', 'i']
+    cols_align = ['r', 'c', 'c', 'r', 'r', 'r', 'r']
+    colalign = [{
+        "r": "right",
+        "l": "left",
+        "c": "center",
+    }[align] for align in cols_align]
+    cols_width = [5, 10, 20, 15, 15, 20, 10]
+
+    table.set_cols_dtype(cols_dtype)
+    table.set_cols_align(cols_align)
+    table.set_cols_width(cols_width)
     for source, datasets in DATASETS.items():
         for dataset in datasets:
             main(source, dataset)
 
     with open('./docs/rst/table.rst', 'w') as tf:
-        tf.writelines("""statistics
-===========
+        # custom table style
+        cssclass = "dataset-cheatsheet"
+        with open('./docs/_static/css/table.css', 'w') as t:
+            t.writelines(f"""
+table.{cssclass}>thead th.head {{
+    text-align: center;
+}}
+""")
+            for idx, align in enumerate(colalign):
+                t.writelines(
+                    f"""
+table.{cssclass}>tbody td:nth-child({idx + 1}){{
+    text-align: {align};
+}}
+"""
+                )
+        # insert table content
+        tf.writelines(f"""Dataset Cheatsheet
+====================
+.. cssclass:: {cssclass}
 """)
         tbody.insert(0, thead)
         table.add_rows(tbody)
@@ -71,7 +99,10 @@ if __name__ == "__main__":
         tf.write(
             re.sub(
                 r"(?<=<!-- Statistics begins -->\n## Statistics\n)(.*)(?=\n<!-- Statistics ends -->)",
-                pd.DataFrame(tbody, columns=thead).to_markdown(index=False),
+                pd.DataFrame(tbody, columns=thead).to_markdown(
+                    index=False,
+                    colalign=colalign,
+                ),
                 txt,
                 flags=re.S,
             )

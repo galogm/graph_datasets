@@ -63,7 +63,11 @@ def load_pyg_data(
     elif dataset_name in ["wikics"]:
         dataset = WikiCS(root=path, is_undirected=False)
     else:
-        raise NotImplementedError(f"{dataset_name} is not supported.")
+        raise NotImplementedError(
+            f"The Dataset '{dataset_name}' is not supported."
+            f"Please check the sources or datasets on:\n"
+            f"https://galogm.github.io/graph_datasets_docs/rst/table.html"
+        )
 
     data = dataset[0]
 

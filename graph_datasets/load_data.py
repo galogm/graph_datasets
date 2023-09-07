@@ -118,7 +118,9 @@ def load_data(
         )
     else:
         raise NotImplementedError(
-            f"{dataset_name} is not supported or source {source} is incorrect."
+            f"The dataset '{dataset_name}' is not supported or the source '{source}' is incorrect. "
+            f"Please check the sources or datasets on:\n"
+            f"https://galogm.github.io/graph_datasets_docs/rst/table.html"
         )
 
     # remove self loop and turn graphs into undirected ones

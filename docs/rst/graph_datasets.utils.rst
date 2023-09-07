@@ -3,7 +3,7 @@ evaluation
 .. automodule:: graph_datasets.utils.evaluation.evaluation
    :members:
    :show-inheritance:
-   :exclude-members: save_to_csv_files
+   :exclude-members:
    :no-undoc-members:
 
 statistics

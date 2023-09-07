@@ -1,0 +1,32 @@
+
+table.dataset-cheatsheet>thead th.head {
+    text-align: center;
+}
+
+table.dataset-cheatsheet>tbody td:nth-child(1){
+    text-align: right;
+}
+
+table.dataset-cheatsheet>tbody td:nth-child(2){
+    text-align: center;
+}
+
+table.dataset-cheatsheet>tbody td:nth-child(3){
+    text-align: center;
+}
+
+table.dataset-cheatsheet>tbody td:nth-child(4){
+    text-align: right;
+}
+
+table.dataset-cheatsheet>tbody td:nth-child(5){
+    text-align: right;
+}
+
+table.dataset-cheatsheet>tbody td:nth-child(6){
+    text-align: right;
+}
+
+table.dataset-cheatsheet>tbody td:nth-child(7){
+    text-align: right;
+}

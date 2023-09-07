@@ -36,7 +36,8 @@ def load_critical_dataset(
     Returns:
         Tuple[dgl.DGLGraph, torch.Tensor, int]: [graph, label, n_clusters]
     """
-    data_file = os.path.join(directory, f"{dataset_name.replace('-','_')}.npz")
+    dataset_name = dataset_name.replace("-", "_")
+    data_file = os.path.join(directory, f"{dataset_name}.npz")
 
     if not os.path.exists(data_file):
         url = f"{CRITICAL_URL}/{dataset_name}.npz?raw=true"

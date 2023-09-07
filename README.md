@@ -8,6 +8,11 @@
 
 ## Installation
 
+- python>=3.7
+- torch>=1.12
+- torch_geometric>=2.0
+- dgl>=1.1
+
 ```bash
 $ python -m pip install graph_datasets
 ```
@@ -43,21 +48,6 @@ $ nohup bash scripts/install.sh > logs/install.log &
 ``` -->
 
 <!-- Statistics begins -->
-
-## Contribution
-- Fork the repo.
-- Install env with `python>=3.7`. For linux run:
-```bash
-# install python 3.7.16, e.g, if using pyenv run:
-# pyenv install 3.7.16
-# pyenv local 3.7.16
-bash .ci/install-dev.sh
-bash .ci/install.sh
-
-# activate env:-
-activate .venv/bin/activate
-```
-- Modify the code, commit the changes and create a PR.
 
 ## Statistics
 |   idx | source   | dataset         | n_nodes   | n_feats   | n_edges     |   n_clusters |
@@ -124,3 +114,7 @@ activate .venv/bin/activate
 ## Requirements
 
 See [requirements-dev.txt](./requirements-dev.txt) and [requirements.txt](./requirements.txt).
+
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md).

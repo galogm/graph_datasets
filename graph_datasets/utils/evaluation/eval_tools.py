@@ -119,21 +119,21 @@ def cluster_eval(y_true, y_pred):
 
     acc = ACC(y_true, new_predict)
     f1_macro = F1(y_true, new_predict, average="macro")
-    return acc, f1_macro
+    nmi = NMI(y_true, new_predict, average_method="arithmetic")
+    ami = AMI(y_true, new_predict, average_method="arithmetic")
+    ari = ARI(y_true, new_predict)
+    return acc, nmi, ami, ari, f1_macro
 
 
 def unsup_eval(y_true, y_pred):
     y_true = y_true.detach().cpu().numpy() if isinstance(y_true, torch.Tensor) else y_true
     y_pred = y_pred.detach().cpu().numpy() if isinstance(y_pred, torch.Tensor) else y_pred
 
-    acc, macro_f1 = cluster_eval(y_true, y_pred)
-    nmi = NMI(y_true, y_pred, average_method="arithmetic")
-    ami = AMI(y_true, y_pred, average_method="arithmetic")
-    ari = ARI(y_true, y_pred)
-    return acc, nmi, ami, ari, macro_f1
+    acc, nmi, ami, ari, f1_macro = cluster_eval(y_true, y_pred)
+    return acc, nmi, ami, ari, f1_macro
 
 
-def kmeans_test(X, y, n_clusters, repeat=10, quiet=True):
+def kmeans_test(X, y, n_clusters, repeat=10):
     y = y.detach().cpu().numpy() if isinstance(y, torch.Tensor) else y
     X = X.detach().cpu().numpy() if isinstance(X, torch.Tensor) else X
 

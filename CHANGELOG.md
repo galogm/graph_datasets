@@ -2,6 +2,23 @@
 
 
 
+## v0.5.2 (2023-09-13)
+
+### Chore
+
+* chore: docs ([`2104ef5`](https://github.com/galogm/graph_datasets/commit/2104ef57987b4cf97df37136eb5238bb962c80e0))
+
+### Fix
+
+* fix: compute nmi, ami, ari after mapping ([`ab2a222`](https://github.com/galogm/graph_datasets/commit/ab2a222761e2468a963fdfb328ee14fefe74052d))
+
+### Unknown
+
+* Merge pull request #21 from galogm/fix/0.5.2
+
+fix: compute nmi, ami, ari after mapping ([`0e48da0`](https://github.com/galogm/graph_datasets/commit/0e48da05aba162f9c8bc275dd40364521443e820))
+
+
 ## v0.5.1 (2023-09-07)
 
 ### Chore

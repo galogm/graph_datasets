@@ -36,6 +36,8 @@ def load_critical_dataset(
     Returns:
         Tuple[dgl.DGLGraph, torch.Tensor, int]: [graph, label, n_clusters]
     """
+    if dataset_name in ["squirrel", "chameleon"]:
+        dataset_name = f"{dataset_name}_filtered_directed"
     dataset_name = dataset_name.replace("-", "_")
     data_file = os.path.join(directory, f"{dataset_name}.npz")
 

@@ -1,9 +1,4 @@
 {
     "python.defaultInterpreterPath": ".venv/bin/python",
-    "python.formatting.provider": "yapf",
-    "editor.wordWrap": "on",
-    "python.linting.enabled": true,
-    "python.linting.pylintPath": "pylint",
-    "python.linting.pylintUseMinimalCheckers": false,
-    "python.linting.pylintEnabled": true,
+    "editor.wordWrap": "on"
 }

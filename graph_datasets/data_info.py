@@ -123,6 +123,8 @@ CRITICAL_DATASETS = [
     "minesweeper",
     "tolokers",
     "questions",
+    "squirrel",
+    "chameleon",
 ]
 
 DATASETS = {

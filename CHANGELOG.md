@@ -2,6 +2,13 @@
 
 
 
+## v0.6.0 (2023-11-06)
+
+### Feature
+
+* feat: add squirrel and chameleon in critial ([`2454e3d`](https://github.com/galogm/graph_datasets/commit/2454e3d8ca1d69eac9b60c2cc0d379895bf7c3fa))
+
+
 ## v0.5.2 (2023-09-13)
 
 ### Chore

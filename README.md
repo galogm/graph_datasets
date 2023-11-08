@@ -108,6 +108,8 @@ $ nohup bash scripts/install.sh > logs/install.log &
 |    55 | critical |   minesweeper   |    10,000 |         7 |      78,804 |            2 |
 |    56 | critical |    tolokers     |    11,758 |        10 |   1,038,000 |            2 |
 |    57 | critical |    questions    |    48,921 |       301 |     307,080 |            2 |
+|    58 | critical |    squirrel     |     2,223 |     2,089 |      93,996 |            5 |
+|    59 | critical |    chameleon    |       890 |     2,325 |      17,708 |            5 |
 <!-- Statistics ends -->
 
 ## Requirements

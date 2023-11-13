@@ -11,7 +11,7 @@ $ bash .ci/install-dev.sh
 $ bash .ci/install.sh
 
 # activate env:-
-$ activate .venv/bin/activate
+$ activate .env/bin/activate
 ```
 
 - Modify the code, commit the changes and create a PR.

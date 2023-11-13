@@ -42,7 +42,7 @@ jobs:
       - name: Build
         run: |
           bash .ci/install-dev.sh && bash .ci/install-cpu.sh
-          source .venv/bin/activate
+          source .env/bin/activate
           python -m build
 
       - name: Publish package distributions to PyPI
@@ -81,7 +81,7 @@ jobs:
 #         run: |
 #           git config --local user.name "github-actions"
 #           git config --local user.email "action@github.com"
-#           source .venv/bin/activate && semantic-release publish -D commit_author="github-actions <action@github.com>"
+#           source .env/bin/activate && semantic-release publish -D commit_author="github-actions <action@github.com>"
 #         env:
 #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}

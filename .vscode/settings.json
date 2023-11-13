@@ -1,4 +1,9 @@
 {
-    "python.defaultInterpreterPath": ".venv/bin/python",
-    "editor.wordWrap": "on"
+    "python.defaultInterpreterPath": ".env/bin/python",
+    "editor.wordWrap": "on",
+    "python.languageServer": "Pylance",
+    "pylint.path": [".env/bin/pylint"],
+    "pylint.interpreter": [".env/bin/python"],
+    "black-formatter.path": [".env/bin/black"],
+    "black-formatter.interpreter": [".env/bin/python"]
 }

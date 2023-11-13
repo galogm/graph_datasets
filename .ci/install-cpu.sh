@@ -1,16 +1,16 @@
-# # install python 3.7.16 use pyenv
+# # install python 3.8.16 use pyenv
 # sudo apt-get install zlib1g-dev libffi-dev libreadline-dev libssl-dev libsqlite3-dev libncurses5 libncurses5-dev libncursesw5 lzma liblzma-dev libbz2-dev
-# pyenv install 3.7.16
-# pyenv local 3.7.16
+# pyenv install 3.8.16
+# pyenv local 38.16
 
 # create and activate virtual environment
-if [ ! -d '.venv' ]; then
-    python3 -m venv .venv && echo create venv
+if [ ! -d '.env' ]; then
+    python3 -m venv .env && echo create env
 else
-    echo venv exists
+    echo env exists
 fi
 
-source .venv/bin/activate
+source .env/bin/activate
 
 # # update pip
 # python -m pip install -U pip

@@ -2,6 +2,17 @@
 
 
 
+## v0.7.0 (2023-11-13)
+
+### Chore
+
+* chore: update cheatsheet ([`e68ee30`](https://github.com/galogm/graph_datasets/commit/e68ee303aabc4583590465f95835704a366e5c0b))
+
+### Feature
+
+* feat: update python version ([`e810f4e`](https://github.com/galogm/graph_datasets/commit/e810f4e27d952618be5b14a63f90d4b4eee7b432))
+
+
 ## v0.6.0 (2023-11-06)
 
 ### Feature

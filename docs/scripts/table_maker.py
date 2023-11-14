@@ -16,7 +16,7 @@ idx = 0
 def main(_source, _dataset):
     graph, _, n_clusters = load_data(
         dataset_name=_dataset,
-        directory="./data",
+        directory="/data1/guming/projects/graph_datasets/data",
         source=_source,
         verbosity=1,
     )

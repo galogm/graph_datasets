@@ -8,7 +8,7 @@
 
 ## Installation
 
-- python>=3.7
+- python>=3.8
 - torch>=1.12
 - torch_geometric>=2.0
 - dgl>=1.1

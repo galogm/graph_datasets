@@ -125,7 +125,7 @@ def load_linkx_data(
     elif dataset_name in ["wiki"]:
         g, _, num_classes = load_wiki_data(directory=directory)
     elif dataset_name in ["twitch-gamers"]:
-        g, _, num_classes = load_twitch_gamers_data()
+        g, _, num_classes = load_twitch_gamers_data(directory=directory)
     elif dataset_name in ["arxiv-year"]:
         g, _, num_classes = load_arxiv_year_data(
             directory=directory,

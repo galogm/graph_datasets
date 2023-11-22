@@ -303,3 +303,33 @@ def evaluate_results_nc(
         f1_mean,
         f1_std,
     )
+
+
+def save_embedding(
+    node_embeddings,
+    dataset_name,
+    model_name,
+    params: dict,
+    save_dir='./save'
+    ):
+    dataset_name = dataset_name.replace('_', '-')
+    import os
+    import torch
+    from datetime import datetime
+    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")  # 获取当前时间戳
+    file_name = f'{dataset_name.lower()}_{model_name.lower()}_embeds_{timestamp}.pth'
+    file_path = os.path.join(save_dir, file_name)
+
+    # if 'seed' in params:
+    #     params.pop('seed', None)
+
+    # 将嵌入和超参数组合为一个字典
+    result = {
+        'node_embeddings': node_embeddings.cpu().detach(),
+        'hyperparameters': params
+    }
+
+    # 使用 torch.save 保存字典到文件
+    torch.save(result, file_path)
+
+    print(f"Embeddings and hyperparameters saved to {file_path}")

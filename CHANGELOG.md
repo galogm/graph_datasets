@@ -2,6 +2,25 @@
 
 
 
+## v0.8.0 (2023-11-23)
+
+### Chore
+
+* chore: update doc ([`c9fc589`](https://github.com/galogm/graph_datasets/commit/c9fc589663a96c6951924d0a2217eb2813d5e1be))
+
+### Feature
+
+* feat: add save embed func (#22)
+
+* fix: add save embed func
+
+* fix: add save embedding
+
+---------
+
+Co-authored-by: galogm &lt;gumingwork@gmail.com&gt; ([`7b46d03`](https://github.com/galogm/graph_datasets/commit/7b46d03d67d3f0c058989076ce923201371c9f4f))
+
+
 ## v0.7.0 (2023-11-13)
 
 ### Chore

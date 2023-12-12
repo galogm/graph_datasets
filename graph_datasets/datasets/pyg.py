@@ -5,7 +5,6 @@ from typing import Tuple
 
 import dgl
 import torch
-import torch_geometric.transforms as T
 from torch_geometric.datasets import Actor
 from torch_geometric.datasets import Amazon
 from torch_geometric.datasets import Coauthor
@@ -20,6 +19,7 @@ from ..data_info import DEFAULT_DATA_DIR
 from ..utils import print_dataset_info
 
 
+# pylint: disable=too-many-branches
 def load_pyg_data(
     dataset_name: str,
     directory: str = DEFAULT_DATA_DIR,
@@ -39,6 +39,9 @@ def load_pyg_data(
 
     Returns:
         Tuple[dgl.DGLGraph, torch.Tensor, int]: [graph, label, n_clusters]
+
+    Note:
+        No row-normalization conducted.
     """
     path = os.path.join(os.path.abspath(directory), dataset_name)
 
@@ -51,15 +54,15 @@ def load_pyg_data(
     elif dataset_name in ["chameleon"]:
         dataset = WikipediaNetwork(root=path, name=dataset_name)
     elif dataset_name in ["squirrel"]:
-        dataset = WikipediaNetwork(root=path, name=dataset_name, transform=T.NormalizeFeatures())
+        dataset = WikipediaNetwork(root=path, name=dataset_name)
     elif dataset_name in ["actor"]:
         dataset = Actor(root=path)
     elif dataset_name in ["cornell", "texas", "wisconsin"]:
         dataset = WebKB(root=path, name=dataset_name)
     elif dataset_name in ["computers", "photo"]:
-        dataset = Amazon(root=path, name=dataset_name, transform=T.NormalizeFeatures())
+        dataset = Amazon(root=path, name=dataset_name)
     elif dataset_name in ["cs", "physics"]:
-        dataset = Coauthor(root=path, name=dataset_name, transform=T.NormalizeFeatures())
+        dataset = Coauthor(root=path, name=dataset_name)
     elif dataset_name in ["wikics"]:
         dataset = WikiCS(root=path, is_undirected=False)
     else:
@@ -80,6 +83,14 @@ def load_pyg_data(
     graph = dgl.graph((edges[0, :].numpy(), edges[1, :].numpy()))
     graph.ndata["feat"] = features
     graph.ndata["label"] = labels
+    if "train_mask" in data:
+        graph.ndata["train_mask"] = data.train_mask
+        graph.ndata["val_mask"] = data.val_mask
+        graph.ndata["test_mask"] = data.test_mask
+    else:
+        graph.ndata["train_mask"] = None
+        graph.ndata["val_mask"] = None
+        graph.ndata["test_mask"] = None
 
     if verbosity and verbosity > 1:
         print_dataset_info(

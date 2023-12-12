@@ -2,6 +2,13 @@
 
 
 
+## v0.8.1 (2023-12-12)
+
+### Fix
+
+* fix: remove row normalization of pyg and add train-test-val mask to pyg ([`434b558`](https://github.com/galogm/graph_datasets/commit/434b5589eabe519754f6db72cd8f03417afddbc4))
+
+
 ## v0.8.0 (2023-11-23)
 
 ### Chore

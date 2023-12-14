@@ -2,6 +2,13 @@
 
 
 
+## v0.8.2 (2023-12-14)
+
+### Fix
+
+* fix: update dependencies ([`b409c74`](https://github.com/galogm/graph_datasets/commit/b409c7461cbdf1d57469b31df8b54da964fc89c6))
+
+
 ## v0.8.1 (2023-12-12)
 
 ### Fix

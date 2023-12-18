@@ -2,6 +2,13 @@
 
 
 
+## v0.8.3 (2023-12-18)
+
+### Fix
+
+* fix: error when no train_mask in dgl ([`17635d5`](https://github.com/galogm/graph_datasets/commit/17635d529ebd2fae75d97a4dfd1cc86bb6085267))
+
+
 ## v0.8.2 (2023-12-14)
 
 ### Fix

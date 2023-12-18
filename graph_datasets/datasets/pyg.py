@@ -87,10 +87,6 @@ def load_pyg_data(
         graph.ndata["train_mask"] = data.train_mask
         graph.ndata["val_mask"] = data.val_mask
         graph.ndata["test_mask"] = data.test_mask
-    else:
-        graph.ndata["train_mask"] = None
-        graph.ndata["val_mask"] = None
-        graph.ndata["test_mask"] = None
 
     if verbosity and verbosity > 1:
         print_dataset_info(

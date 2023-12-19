@@ -2,6 +2,19 @@
 
 
 
+## v0.9.0 (2023-12-19)
+
+### Breaking
+
+* fix: update csv3file, changing is_dict into is_dict_list and add sorted_head
+
+BREAKING CHANGE: the protocal of the parameters of csv3file changes ([`7accdff`](https://github.com/galogm/graph_datasets/commit/7accdff737bfa51e79e23d5a04c0c32b6c68abfc))
+
+### Chore
+
+* chore: update docs ([`ca92e18`](https://github.com/galogm/graph_datasets/commit/ca92e18d0b1a1fae18174517ea5b8244b8671429))
+
+
 ## v0.8.3 (2023-12-18)
 
 ### Fix

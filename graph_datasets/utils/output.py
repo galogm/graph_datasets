@@ -4,7 +4,8 @@ import csv
 import os
 from pathlib import Path
 from pathlib import PurePath
-from typing import Tuple
+from typing import Any
+from typing import List
 
 
 def make_parent_dirs(target_path: PurePath) -> None:
@@ -34,20 +35,23 @@ def refresh_file(target_path: str = None) -> None:
 
 def csv2file(
     target_path: str,
-    thead: Tuple[str] = None,
-    tbody: Tuple = None,
+    thead: List[str] = None,
+    tbody: List[Any] = None,
     refresh: bool = False,
-    is_dict: bool = False,
+    is_dict_list: bool = False,
+    sort_head: bool = True,
 ) -> None:
-    """save csv to target_path
+    """_summary_
 
     Args:
         target_path (str): target path
-        thead (Tuple[str], optional): csv table header, only written into the file when\
+        thead (List[str], optional): csv table header, only written into the file when\
             it is not None and file is empty. Defaults to None.
-        tbody (Tuple, optional): csv table content. Defaults to None.
+        tbody (List, optional): csv table content. Defaults to None.
         refresh (bool, optional): whether to clean the file first. Defaults to False.
-        is_dict (bool, optional): whether the tbody is in the format of a dict. Defaults to False.
+        is_dict_list (bool, optional): whether the tbody is in the format of a list of dicts. \
+            Defaults to False.
+        sort_head (bool, optional): whether to sort the head before writing. Defaults to True.
 
     Example:
         .. code-block:: python
@@ -66,7 +70,7 @@ def csv2file(
                 thead=list(final_params.keys()),
                 tbody=list(final_params.values()),
                 refresh=False,
-                is_dict=False,
+                is_dict_list=False,
             )
             # list of dicts
             csv2file(
@@ -81,7 +85,7 @@ def csv2file(
                         "b": 1
                     },
                 ],
-                is_dict=True,
+                is_dict_list=True,
             )
     """
     target_path: PurePath = Path(target_path)
@@ -92,10 +96,14 @@ def csv2file(
 
     with open(target_path, "a+", newline="", encoding="utf-8") as csvfile:
         csv_write = csv.writer(csvfile)
-        if os.stat(target_path).st_size == 0 and thead is not None:
-            csv_write.writerow(thead)
         if tbody is not None:
-            if is_dict:
+            if is_dict_list:
+                if sort_head:
+                    keys = sorted(list(tbody[0].keys()))
+                    if os.stat(target_path).st_size == 0:
+                        csv_write.writerow(keys)
+                    tbody = [{k: b[k] for k in keys} for b in tbody]
+
                 dict_writer = csv.DictWriter(
                     csvfile,
                     fieldnames=tbody[0].keys(),
@@ -103,6 +111,10 @@ def csv2file(
                 for elem in tbody:
                     dict_writer.writerow(elem)
             else:
+                if os.stat(target_path).st_size == 0 and thead is not None:
+                    if sort_head:
+                        thead, tbody = list(zip(*sorted(zip(thead, tbody), key=lambda x: x[0])))
+                    csv_write.writerow(thead)
                 csv_write.writerow(tbody)
 
 
@@ -148,5 +160,5 @@ def save_to_csv_files(
         thead=list(results.keys()),
         tbody=list(results.values()),
         refresh=False,
-        is_dict=False,
+        is_dict_list=False,
     )

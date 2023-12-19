@@ -41,7 +41,7 @@ def csv2file(
     is_dict_list: bool = False,
     sort_head: bool = True,
 ) -> None:
-    """_summary_
+    """save data to target_path of a csv file.
 
     Args:
         target_path (str): target path

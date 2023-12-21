@@ -13,6 +13,7 @@ from .output import csv2file
 from .output import make_parent_dirs
 from .output import refresh_file
 from .output import save_to_csv_files
+from .plt import draw_chart
 from .statistics import edge_homo
 from .statistics import node_homo
 from .statistics import statistics

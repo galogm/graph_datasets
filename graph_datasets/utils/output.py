@@ -111,10 +111,11 @@ def csv2file(
                 for elem in tbody:
                     dict_writer.writerow(elem)
             else:
-                if os.stat(target_path).st_size == 0 and thead is not None:
+                if thead is not None:
                     if sort_head:
                         thead, tbody = list(zip(*sorted(zip(thead, tbody), key=lambda x: x[0])))
-                    csv_write.writerow(thead)
+                    if os.stat(target_path).st_size == 0:
+                        csv_write.writerow(thead)
                 csv_write.writerow(tbody)
 
 

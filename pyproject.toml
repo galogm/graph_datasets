@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "graph_datasets"
-version = "0.9.0"
+version = "0.10.0"
 authors = [{ name = "galo.gm", email = "galo.gm.work@gmail.com" }]
 keywords = ["graph", "datasets"]
 description = "Load graph datasets."

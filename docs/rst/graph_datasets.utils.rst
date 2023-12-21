@@ -28,6 +28,13 @@ output
    :show-inheritance:
    :no-undoc-members:
 
+plt
+======================
+.. automodule:: graph_datasets.utils.plt
+   :members:
+   :show-inheritance:
+   :no-undoc-members:
+
 common
 ======================
 .. automodule:: graph_datasets.utils.common

@@ -2,6 +2,23 @@
 
 
 
+## v0.10.0 (2023-12-21)
+
+### Chore
+
+* chore: update docs ([`a26de10`](https://github.com/galogm/graph_datasets/commit/a26de10aa5e90d3811d0bac78781e84013d6b0e1))
+
+* chore: update doc ([`f836a50`](https://github.com/galogm/graph_datasets/commit/f836a50e414a7a97f6974cc21056a942928a5cee))
+
+### Feature
+
+* feat: add draw_chart ([`1784af4`](https://github.com/galogm/graph_datasets/commit/1784af40d20416a35d1c447e0316ab987115e88c))
+
+### Fix
+
+* fix: sort_head of csv2file ([`d1dc3e6`](https://github.com/galogm/graph_datasets/commit/d1dc3e6447ea869a18127e28ca72ba36b392ab6b))
+
+
 ## v0.9.0 (2023-12-19)
 
 ### Breaking

@@ -2,6 +2,21 @@
 
 
 
+## v0.11.0 (2023-12-25)
+
+### Chore
+
+* chore: update doc ([`35dd862`](https://github.com/galogm/graph_datasets/commit/35dd86209ddffd82e14142c62bf0ff49c10eec82))
+
+### Feature
+
+* feat: add ding talk utils ([`da7ab4e`](https://github.com/galogm/graph_datasets/commit/da7ab4ebb4b97677d8e3460247cdffb8ae340ba7))
+
+### Unknown
+
+* Merge branch &#39;master&#39; of github.com:galogm/graph_datasets ([`c490374`](https://github.com/galogm/graph_datasets/commit/c490374ca6d2c6a175cefd3e7335c8b46dfe2d63))
+
+
 ## v0.10.0 (2023-12-21)
 
 ### Chore

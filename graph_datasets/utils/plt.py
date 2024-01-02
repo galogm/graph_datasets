@@ -30,7 +30,9 @@ def draw_chart(
     # pylint: disable=unused-argument
     ymode: str = "s",
     title: str = None,
-    xticks: bool = False,
+    set_xticks: bool = False,
+    xticks: List[Any] = None,
+    tick_labels: List[Any] = None,
     x_rotation: float = 45,
     boxes: List[List[int]] = None,
     box_colors: List[str] = None,
@@ -65,7 +67,9 @@ def draw_chart(
         ymode (str, optional): all ys with the same tick ('s') or with different ticks ('d'). \
             Defaults to "s".
         title (str, optional): figure title. Defaults to None.
-        xticks (bool, optional): set the x ticks. Defaults to True.
+        set_xticks (bool, optional): set the x ticks. Defaults to True.
+        xticks (List[Any], optional): ticks for the x axis. Defaults to None.
+        tick_labels (List[Any], optional): tick labels for the x axis. Defaults to None.
         x_rotation (float, optional): rotation of the x ticks. Defaults to 45.
         boxes (List[List[int]], optional): draw boxes. Defaults to None.
         box_colors (List[str], optional): colors of the boxes to draw. Defaults to None.
@@ -139,10 +143,10 @@ def draw_chart(
                 )
 
         # set the ticks of the x axis
-        if xticks:
+        if set_xticks:
             ax.set_xticks(
-                range(0, len(xs)),
-                labels=xs,
+                ticks=range(0, len(xs)) if xticks is None else xticks,
+                labels=xs if tick_labels is None else tick_labels,
                 rotation=x_rotation,
                 ha="right",
             )
@@ -173,10 +177,10 @@ def draw_chart(
                 )
 
         # set the ticks of the x axis
-        if xticks:
+        if set_xticks:
             ax.set_xticks(
-                range(0, len(xs[0])),
-                labels=xs[0],
+                ticks=range(0, len(xs[0])) if xticks is None else xticks,
+                labels=xs[0] if tick_labels is None else tick_labels,
                 rotation=x_rotation,
                 ha="right",
             )
@@ -208,10 +212,10 @@ def draw_chart(
                 )
 
         # set the ticks of the x axis
-        if xticks:
+        if set_xticks:
             ax.set_xticks(
-                range(0, len(xs)),
-                list(range(len(ys[0]))),
+                ticks=range(0, len(xs)) if xticks is None else xticks,
+                labels=list(range(len(ys[0]))) if tick_labels is None else tick_labels,
                 rotation=45,
                 ha="right",
             )

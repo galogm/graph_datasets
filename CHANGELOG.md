@@ -2,6 +2,13 @@
 
 
 
+## v0.11.1 (2024-01-02)
+
+### Fix
+
+* fix: add xticks and xtick_labels for draw_chart ([`eaa5422`](https://github.com/galogm/graph_datasets/commit/eaa5422ad8aa5158e8fabde2200674776f3dd914))
+
+
 ## v0.11.0 (2023-12-25)
 
 ### Chore

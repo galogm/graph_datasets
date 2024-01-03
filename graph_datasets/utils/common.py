@@ -2,18 +2,29 @@
 """
 import os
 import sys
-import time
+from datetime import datetime
 from typing import Any
 from typing import Dict
 from typing import List
 
 import gdown
+import pytz
 from texttable import Texttable
 
 
-def get_str_time():
-    """Return localtime in the format of "%m%d%H%M%S"."""
-    return time.strftime("%m%d%H%M%S", time.localtime())
+def get_str_time(timezone="Asia/Shanghai"):
+    """Return localtime in the format of %Y-%m-%d-%H:%M:%S."""
+
+    # Set the timezone to Beijing
+    beijing_timezone = pytz.timezone(timezone)
+
+    # Get the current time in UTC
+    utc_now = datetime.utcnow()
+
+    # Convert UTC time to Beijing time
+    beijing_now = utc_now.replace(tzinfo=pytz.utc).astimezone(beijing_timezone)
+
+    return beijing_now.strftime("%Y-%m-%d-%H:%M:%S")
 
 
 def format_value(value) -> Any:

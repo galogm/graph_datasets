@@ -2,6 +2,17 @@
 
 
 
+## v0.12.0 (2024-01-03)
+
+### Feature
+
+* feat: add evaluate_from_embeddings ([`812d1e1`](https://github.com/galogm/graph_datasets/commit/812d1e1fa720b0c9f7ea4f075b21e556eb21aacc))
+
+### Fix
+
+* fix: add format result ([`81f7be7`](https://github.com/galogm/graph_datasets/commit/81f7be727c837caec773babd04b859122d657287))
+
+
 ## v0.11.2 (2024-01-03)
 
 ### Fix

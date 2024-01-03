@@ -5,6 +5,7 @@ import os
 from typing import Dict
 from typing import Tuple
 
+import numpy as np
 import torch
 
 from .eval_tools import evaluate_results_nc
@@ -20,6 +21,75 @@ def load_from_file(file_name):
         raise RuntimeError(f"Error occurred while loading *.pth from '{file_name}'") from el
 
     return embeddings
+
+
+def evaluate_from_embeddings(
+    labels: np.ndarray,
+    num_classes: int,
+    num_nodes: int,
+    data_name: str,
+    embeddings: torch.Tensor,
+    quiet: bool = True,
+    method: str = "both",
+) -> Tuple[Dict, Dict]:
+    """evaluate embeddings with LR and Clustering.
+
+    Args:
+        labels (np.ndarray): labels.
+        num_classes (int): number of classes.
+        num_nodes (int): number of nodes.
+        data_name (str): name of the datasets.
+        embeddings (torch.Tensor): embeddings.
+        quiet (bool, optional): whether to print info. Defaults to True.
+        method (bool, optional): method for evaluation, \
+            "sup" for linear regression, "unsup" for svm clustering, "both" for both.\
+            Defaults to "both".
+
+    Returns:
+        Tuple[Dict, Dict]: (clustering_results, classification_results)
+    """
+    # Call the evaluate_results_nc function with the loaded embeddings
+    (
+        svm_macro_f1_list,
+        svm_micro_f1_list,
+        acc_mean,
+        acc_std,
+        nmi_mean,
+        nmi_std,
+        ami_mean,
+        ami_std,
+        ari_mean,
+        ari_std,
+        f1_mean,
+        f1_std,
+    ) = evaluate_results_nc(
+        labels,
+        num_classes,
+        num_nodes,
+        data_name,
+        embeddings,
+        quiet=quiet,
+        method=method,
+    )
+
+    # Format the output as desired
+    clustering_results = {
+        "ACC": f"{acc_mean * 100:.2f}±{acc_std * 100:.2f}",
+        "NMI": f"{nmi_mean * 100:.2f}±{nmi_std * 100:.2f}",
+        "AMI": f"{ami_mean * 100:.2f}±{ami_std * 100:.2f}",
+        "ARI": f"{ari_mean * 100:.2f}±{ari_std * 100:.2f}",
+        "MaF1": f"{f1_mean * 100:.2f}±{f1_std * 100:.2f}",
+    }
+
+    svm_macro_f1_list = [f"{res[0] * 100:.2f}±{res[1] * 100:.2f}" for res in svm_macro_f1_list]
+    svm_micro_f1_list = [f"{res[0] * 100:.2f}±{res[1] * 100:.2f}" for res in svm_micro_f1_list]
+
+    classification_results = {}
+    for i, percent in enumerate(["10%", "20%", "30%", "40%"]):
+        classification_results[f"{percent}_MaF1"] = svm_macro_f1_list[i]
+        classification_results[f"{percent}_MiF1"] = svm_micro_f1_list[i]
+
+    return clustering_results, classification_results
 
 
 def evaluate_from_embed_file(
@@ -60,45 +130,19 @@ def evaluate_from_embed_file(
     embeddings = load_from_file(embedding_file).cpu().detach()
     data = load_from_file(data_file)
 
-    # Call the evaluate_results_nc function with the loaded embeddings
-    (
-        svm_macro_f1_list,
-        svm_micro_f1_list,
-        acc_mean,
-        acc_std,
-        nmi_mean,
-        nmi_std,
-        ami_mean,
-        ami_std,
-        ari_mean,
-        ari_std,
-        f1_mean,
-        f1_std,
-    ) = evaluate_results_nc(
-        data,
-        embeddings,
+    labels = data.y.detach().cpu().numpy()
+    num_classes = data.num_classes
+    num_nodes = data.num_nodes
+    data_name = data.name
+
+    return evaluate_from_embeddings(
+        labels=labels,
+        num_classes=num_classes,
+        num_nodes=num_nodes,
+        data_name=data_name,
+        embeddings=embeddings,
         quiet=quiet,
-        method="both",
     )
-
-    # Format the output as desired
-    clustering_results = {
-        "ACC": f"{acc_mean * 100:.2f}±{acc_std * 100:.2f}",
-        "NMI": f"{nmi_mean * 100:.2f}±{nmi_std * 100:.2f}",
-        "AMI": f"{ami_mean * 100:.2f}±{ami_std * 100:.2f}",
-        "ARI": f"{ari_mean * 100:.2f}±{ari_std * 100:.2f}",
-        "Macro F1": f"{f1_mean * 100:.2f}±{f1_std * 100:.2f}",
-    }
-
-    svm_macro_f1_list = [f"{res[0] * 100:.2f}±{res[1] * 100:.2f}" for res in svm_macro_f1_list]
-    svm_micro_f1_list = [f"{res[0] * 100:.2f}±{res[1] * 100:.2f}" for res in svm_micro_f1_list]
-
-    classification_results = {}
-    for i, percent in enumerate(["10%", "20%", "30%", "40%"]):
-        classification_results[f"{percent}_Macro-F1"] = svm_macro_f1_list[i]
-        classification_results[f"{percent}_Micro-F1"] = svm_micro_f1_list[i]
-
-    return clustering_results, classification_results
 
 
 # if __name__ == "__main__":

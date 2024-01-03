@@ -17,6 +17,7 @@ from sklearn.metrics import f1_score as F1
 from sklearn.metrics import normalized_mutual_info_score as NMI
 from sklearn.svm import LinearSVC
 
+from ..common import get_str_time
 from ..common import tab_printer
 
 
@@ -38,7 +39,14 @@ def save_dict(di_, filename_):
         pickle.dump(di_, f)
 
 
-def split_train_test_nodes(data, train_ratio, valid_ratio, data_name, split_id=0, fixed_split=True):
+def split_train_test_nodes(
+    num_nodes,
+    train_ratio,
+    valid_ratio,
+    data_name,
+    split_id=0,
+    fixed_split=True,
+):
     if fixed_split:
         file_path = f"../input/fixed_splits/{data_name}-{train_ratio}-{valid_ratio}-splits.npy"
         if not os.path.exists(file_path):
@@ -47,13 +55,12 @@ def split_train_test_nodes(data, train_ratio, valid_ratio, data_name, split_id=0
             splits = {}
             for idx in range(10):
                 # set up train val and test
-                shuffle = list(range(data.num_nodes))
+                shuffle = list(range(num_nodes))
                 random.shuffle(shuffle)
-                train_nodes = shuffle[:int(data.num_nodes * train_ratio / 100)]
-                val_nodes = shuffle[
-                    int(data.num_nodes * train_ratio /
-                        100):int(data.num_nodes * (train_ratio + valid_ratio) / 100)]
-                test_nodes = shuffle[int(data.num_nodes * (train_ratio + valid_ratio) / 100):]
+                train_nodes = shuffle[:int(num_nodes * train_ratio / 100)]
+                val_nodes = shuffle[int(num_nodes * train_ratio /
+                                        100):int(num_nodes * (train_ratio + valid_ratio) / 100)]
+                test_nodes = shuffle[int(num_nodes * (train_ratio + valid_ratio) / 100):]
                 splits[idx] = {"train": train_nodes, "valid": val_nodes, "test": test_nodes}
             save_dict(di_=splits, filename_=file_path)
         else:
@@ -62,12 +69,12 @@ def split_train_test_nodes(data, train_ratio, valid_ratio, data_name, split_id=0
         train_nodes, val_nodes, test_nodes = split["train"], split["valid"], split["test"]
     else:
         # set up train val and test
-        shuffle = list(range(data.num_nodes))
+        shuffle = list(range(num_nodes))
         random.shuffle(shuffle)
-        train_nodes = shuffle[:int(data.num_nodes * train_ratio / 100)]
-        val_nodes = shuffle[int(data.num_nodes * train_ratio /
-                                100):int(data.num_nodes * (train_ratio + valid_ratio) / 100)]
-        test_nodes = shuffle[int(data.num_nodes * (train_ratio + valid_ratio) / 100):]
+        train_nodes = shuffle[:int(num_nodes * train_ratio / 100)]
+        val_nodes = shuffle[int(num_nodes * train_ratio /
+                                100):int(num_nodes * (train_ratio + valid_ratio) / 100)]
+        test_nodes = shuffle[int(num_nodes * (train_ratio + valid_ratio) / 100):]
 
     return np.array(train_nodes), np.array(val_nodes), np.array(test_nodes)
 
@@ -175,7 +182,7 @@ def kmeans_test(X, y, n_clusters, repeat=10):
     )
 
 
-def svm_test(data, embeddings, labels, train_ratios=(10, 20, 30, 40), repeat=10):
+def svm_test(num_nodes, data_name, embeddings, labels, train_ratios=(10, 20, 30, 40), repeat=10):
     result_macro_f1_list = []
     result_micro_f1_list = []
     for train_ratio in train_ratios:
@@ -183,10 +190,10 @@ def svm_test(data, embeddings, labels, train_ratios=(10, 20, 30, 40), repeat=10)
         micro_f1_list = []
         for i in range(repeat):
             train_idx, val_idx, test_idx = split_train_test_nodes(
-                data=data,
+                num_nodes=num_nodes,
                 train_ratio=train_ratio,
                 valid_ratio=train_ratio,
-                data_name=data.name,
+                data_name=data_name,
                 split_id=i,
             )
             X_train, X_test = embeddings[np.concatenate([train_idx, val_idx])], embeddings[test_idx]
@@ -204,16 +211,16 @@ def svm_test(data, embeddings, labels, train_ratios=(10, 20, 30, 40), repeat=10)
 
 
 def evaluate_results_nc(
-    data,
+    labels,
+    num_classes,
+    num_nodes,
+    data_name,
     embeddings,
     quiet=False,
     method="unsup",
     alpha: float = 2.0,
     beta: float = 2.0,
 ):
-    labels = data.y.detach().cpu().numpy()
-    num_classes = data.num_classes
-    num_nodes = data.num_nodes
     if embeddings.shape[0] > num_nodes:
         z_1 = embeddings[:num_nodes]
         z_2 = embeddings[num_nodes:]
@@ -227,7 +234,8 @@ def evaluate_results_nc(
             svm_macro_f1_list,
             svm_micro_f1_list,
         ) = svm_test(
-            data=data,
+            num_nodes=num_nodes,
+            data_name=data_name,
             embeddings=embeddings,
             labels=labels,
         )
@@ -315,7 +323,7 @@ def save_embedding(
     verbose: bool or int = True,
 ):
     dataset_name = dataset_name.replace("_", "-")
-    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+    timestamp = get_str_time()
     file_name = f"{dataset_name.lower()}_{model_name.lower()}_embeds_{timestamp}.pth"
     file_path = os.path.join(save_dir, file_name)
 

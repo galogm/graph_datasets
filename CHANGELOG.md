@@ -2,6 +2,17 @@
 
 
 
+## v0.11.2 (2024-01-03)
+
+### Fix
+
+* fix: update get_str_time ([`de0953e`](https://github.com/galogm/graph_datasets/commit/de0953e1efa76690a8f93fce96dc5a4d84896b6c))
+
+### Unknown
+
+* Merge branch &#39;master&#39; of github.com:galogm/graph_datasets ([`68bdd22`](https://github.com/galogm/graph_datasets/commit/68bdd229082cd32129da0babfe7a12adff0ebd1d))
+
+
 ## v0.11.1 (2024-01-02)
 
 ### Fix

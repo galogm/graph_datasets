@@ -12,19 +12,39 @@ import pytz
 from texttable import Texttable
 
 
+def format_result(
+    dataset: str,
+    source: str,
+    model: str,
+    sort_kw: bool = True,
+    timezone="Asia/Shanghai",
+    **kwargs,
+):
+    time = get_str_time(timezone)
+    if sort_kw:
+        kwargs = dict(sorted(kwargs.items()))
+    return {
+        **kwargs,
+        "ds": dataset,
+        "src": source,
+        "model": model,
+        "time": time,
+    }
+
+
 def get_str_time(timezone="Asia/Shanghai"):
     """Return localtime in the format of %Y-%m-%d-%H:%M:%S."""
 
-    # Set the timezone to Beijing
-    beijing_timezone = pytz.timezone(timezone)
+    # Set the timezone to timezone
+    pytz_timezone = pytz.timezone(timezone)
 
     # Get the current time in UTC
     utc_now = datetime.utcnow()
 
-    # Convert UTC time to Beijing time
-    beijing_now = utc_now.replace(tzinfo=pytz.utc).astimezone(beijing_timezone)
+    # Convert UTC time to timezone time
+    pytz_now = utc_now.replace(tzinfo=pytz.utc).astimezone(pytz_timezone)
 
-    return beijing_now.strftime("%Y-%m-%d-%H:%M:%S")
+    return pytz_now.strftime("%Y-%m-%d-%H:%M:%S")
 
 
 def format_value(value) -> Any:

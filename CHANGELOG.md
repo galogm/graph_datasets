@@ -2,6 +2,17 @@
 
 
 
+## v0.13.1 (2024-02-29)
+
+### Chore
+
+* chore: update dependencies ([`d7da26e`](https://github.com/galogm/graph_datasets/commit/d7da26ec0d01b193640e64775aedbaf367af298f))
+
+### Fix
+
+* fix: enable load_data to return pyg data ([`408a65a`](https://github.com/galogm/graph_datasets/commit/408a65aff7f5c667b9b7aaabd8b105dd42bdef39))
+
+
 ## v0.13.0 (2024-02-29)
 
 ### Feature

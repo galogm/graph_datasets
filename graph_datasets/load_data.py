@@ -6,6 +6,8 @@ from typing import Tuple
 
 import dgl
 import torch
+from torch_geometric.data import Data
+from torch_geometric.utils import from_dgl
 
 from .data_info import COLA_DATASETS
 from .data_info import CRITICAL_DATASETS
@@ -30,9 +32,10 @@ def load_data(
     directory: str = DEFAULT_DATA_DIR,
     verbosity: int = 0,
     source: str = "pyg",
+    return_type: str = "dgl",
     rm_self_loop: bool = True,
     to_simple: bool = True,
-) -> Tuple[dgl.DGLGraph, torch.Tensor, int]:
+) -> Tuple[dgl.DGLGraph, torch.Tensor, int] or Data:
     """Load graphs.
 
     Args:
@@ -42,6 +45,8 @@ def load_data(
         verbosity (int, optional): Output debug information. \
             The greater, the more detailed. Defaults to 0.
         source (str, optional): Source for data loading. Defaults to "pyg".
+        return_type (str, optional): Return type of the graphs within ["dgl", "pyg"]. \
+            Defaults to "dgl".
         rm_self_loop (str, optional): Remove self loops. Defaults to True.
         to_simple (str, optional): Convert to a simple graph with no duplicate undirected edges.
 
@@ -55,12 +60,27 @@ def load_data(
         .. code-block:: python
 
             from graph_datasets import load_data
+            # dgl graph
             graph, label, n_clusters = load_data(
                 dataset_name='cora',
                 directory="./data",
+                return_type="dgl",
                 source='pyg',
                 verbosity=3,
+                rm_self_loop=True,
+                to_simple=True,
             )
+            # pyG data
+            data = load_data(
+                dataset_name='cora',
+                directory="./data",
+                return_type="pyg",
+                source='pyg',
+                verbosity=3,
+                rm_self_loop=True,
+                to_simple=True,
+            )
+
     """
     dataset_name = (
         dataset_name.lower() if dataset_name not in [
@@ -132,8 +152,8 @@ def load_data(
     # make label from 0
     uni = label.unique()
     old2new = dict(zip(uni.numpy().tolist(), list(range(len(uni)))))
-    newlabel = torch.tensor(list(map(lambda x: old2new[x.item()], label)))
-    graph.ndata["label"] = newlabel
+    new_label = torch.tensor(list(map(lambda x: old2new[x.item()], label)))
+    graph.ndata["label"] = new_label
 
     if verbosity:
         print_dataset_info(
@@ -144,7 +164,19 @@ def load_data(
             n_clusters=n_clusters,
         )
 
-    return graph, newlabel, n_clusters
+    if return_type == "dgl":
+        return graph, new_label, n_clusters
+
+    data = from_dgl(graph)
+    data.name = dataset_name
+    data.num_classes = n_clusters
+    data.x = data.feat
+    data.y = data.label
+    data.num_nodes = graph.num_nodes()
+    data.num_edges = graph.num_edges()
+    data.edge_index = torch.stack(graph.edges(), dim=0)
+
+    return data
 
 
 if __name__ == "__main__":

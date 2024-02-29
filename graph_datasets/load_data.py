@@ -137,7 +137,7 @@ def load_data(
 
     if verbosity:
         print_dataset_info(
-            dataset_name=f"{source} undirected {dataset_name}\nwithout self-loops",
+            dataset_name=f"{source.upper()} undirected {dataset_name}\nwithout self-loops",
             n_nodes=graph.num_nodes(),
             n_edges=graph.num_edges(),
             n_feats=graph.ndata["feat"].shape[1],

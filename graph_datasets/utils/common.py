@@ -2,51 +2,12 @@
 """
 import os
 import sys
-from datetime import datetime
 from typing import Any
 from typing import Dict
 from typing import List
 
 import gdown
-import pytz
 from texttable import Texttable
-
-
-def format_result(
-    dataset: str,
-    source: str,
-    model: str,
-    sort_kw: bool = True,
-    timezone="Asia/Shanghai",
-    **kwargs,
-):
-    if sort_kw:
-        kwargs = dict(sorted(kwargs.items()))
-
-    kwargs.update(
-        {
-            "ds": dataset,
-            "src": source,
-            "model": model,
-            "time": get_str_time(timezone),
-        }
-    )
-    return kwargs
-
-
-def get_str_time(timezone="Asia/Shanghai"):
-    """Return localtime in the format of %Y-%m-%d-%H:%M:%S."""
-
-    # Set the timezone to timezone
-    pytz_timezone = pytz.timezone(timezone)
-
-    # Get the current time in UTC
-    utc_now = datetime.utcnow()
-
-    # Convert UTC time to timezone time
-    pytz_now = utc_now.replace(tzinfo=pytz.utc).astimezone(pytz_timezone)
-
-    return pytz_now.strftime("%Y-%m-%d-%H:%M:%S")
 
 
 def format_value(value) -> Any:
@@ -95,8 +56,7 @@ def tab_printer(
             [
                 k.replace("_", " "),
                 f"{args[k]}" if isinstance(args[k], bool) else format_value(args[k]),
-            ]
-            for k in keys
+            ] for k in keys
         ]
     )
     if cols_align is not None:
@@ -119,9 +79,7 @@ def download_tip(info: Dict) -> None:
         data_file (str): filepath.
         url (str): url for downloading.
     """
-    info[
-        "Tip"
-    ] = "If the download fails, \
+    info["Tip"] = "If the download fails, \
 use the 'Download URL' to download manually and move the file to the 'Save Path'."
 
     tab_printer(info)

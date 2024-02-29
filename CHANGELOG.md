@@ -2,6 +2,17 @@
 
 
 
+## v0.13.0 (2024-02-29)
+
+### Feature
+
+* feat: separate graph_utils from graph_datasets ([`ea47387`](https://github.com/galogm/graph_datasets/commit/ea47387d0da4ad221bf645109a95b26420c80f2c))
+
+### Fix
+
+* fix: update n_init of kmeans ([`bf9779a`](https://github.com/galogm/graph_datasets/commit/bf9779ad11516c9c029c42ae0042af76571aca47))
+
+
 ## v0.12.0 (2024-01-03)
 
 ### Feature

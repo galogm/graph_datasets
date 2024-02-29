@@ -151,7 +151,7 @@ def kmeans_test(X, y, n_clusters, repeat=10):
     ari_list = []
     f1_list = []
     for _ in range(repeat):
-        kmeans = KMeans(n_clusters=n_clusters)
+        kmeans = KMeans(n_clusters=n_clusters, n_init='auto')
         y_pred = kmeans.fit_predict(X)
         (
             acc_score,

@@ -20,16 +20,18 @@ def format_result(
     timezone="Asia/Shanghai",
     **kwargs,
 ):
-    time = get_str_time(timezone)
     if sort_kw:
         kwargs = dict(sorted(kwargs.items()))
-    return {
-        **kwargs,
-        "ds": dataset,
-        "src": source,
-        "model": model,
-        "time": time,
-    }
+
+    kwargs.update(
+        {
+            "ds": dataset,
+            "src": source,
+            "model": model,
+            "time": get_str_time(timezone),
+        }
+    )
+    return kwargs
 
 
 def get_str_time(timezone="Asia/Shanghai"):
@@ -93,7 +95,8 @@ def tab_printer(
             [
                 k.replace("_", " "),
                 f"{args[k]}" if isinstance(args[k], bool) else format_value(args[k]),
-            ] for k in keys
+            ]
+            for k in keys
         ]
     )
     if cols_align is not None:
@@ -116,7 +119,9 @@ def download_tip(info: Dict) -> None:
         data_file (str): filepath.
         url (str): url for downloading.
     """
-    info["Tip"] = "If the download fails, \
+    info[
+        "Tip"
+    ] = "If the download fails, \
 use the 'Download URL' to download manually and move the file to the 'Save Path'."
 
     tab_printer(info)

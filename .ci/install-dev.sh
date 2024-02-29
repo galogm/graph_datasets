@@ -1,6 +1,6 @@
 rm -rf .env
 
-# # install python 3.8.16 use pyenv
+# # install python 3.8.16 using pyenv:
 # pyenv install 3.8.16
 # pyenv local 3.8.16
 

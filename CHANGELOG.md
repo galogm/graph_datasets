@@ -2,6 +2,13 @@
 
 
 
+## v0.13.2 (2024-06-26)
+
+### Fix
+
+* fix: add raw_normalize and add_self_loop ([`1103897`](https://github.com/galogm/graph_datasets/commit/1103897157ec3ef520ccd409912f4494b6682a96))
+
+
 ## v0.13.1 (2024-02-29)
 
 ### Chore

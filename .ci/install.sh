@@ -16,12 +16,11 @@ source .env/bin/activate
 # python -m pip install -U pip
 
 # # torch cuda 11.3
-python -m pip install torch==1.12 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu113
+python -m pip install "torch>=1.12,<2.2" torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 
 # dgl cuda 11.3
 # add a source if prefered: -i https://pypi.tuna.tsinghua.edu.cn/simple/
-python -m pip install dgl==1.1.0 -f https://data.dgl.ai/wheels/cu113/repo.html
-python -m pip install dglgo -f https://data.dgl.ai/wheels-test/repo.html
+python3 -m pip install dgl==2.1 -f https://data.dgl.ai/wheels/cu121/repo.html
 
 # install requirements
 # add a source if prefered: -i https://pypi.tuna.tsinghua.edu.cn/simple/

@@ -1,11 +1,14 @@
 """Load Graph Datasets
 """
+
 # pylint:disable=protected-access
 import ssl
 from typing import Tuple
+from typing import Union
 
 import dgl
 import torch
+import torch.nn.functional as F
 from torch_geometric.data import Data
 from torch_geometric.utils import from_dgl
 
@@ -33,9 +36,11 @@ def load_data(
     verbosity: int = 0,
     source: str = "pyg",
     return_type: str = "dgl",
+    raw_normalize: bool = True,
     rm_self_loop: bool = True,
+    add_self_loop: bool = False,
     to_simple: bool = True,
-) -> Tuple[dgl.DGLGraph, torch.Tensor, int] or Data:
+) -> Union[Tuple[dgl.DGLGraph, torch.Tensor, int], Data]:
     """Load graphs.
 
     Args:
@@ -47,14 +52,18 @@ def load_data(
         source (str, optional): Source for data loading. Defaults to "pyg".
         return_type (str, optional): Return type of the graphs within ["dgl", "pyg"]. \
             Defaults to "dgl".
+        raw_normalize (str, optional): Row normalize the feature matrix. Defaults to True.
         rm_self_loop (str, optional): Remove self loops. Defaults to True.
+        add_self_loop (str, optional): Add self loops no matter what rm_self_loop is. \
+            Defaults to True.
         to_simple (str, optional): Convert to a simple graph with no duplicate undirected edges.
 
     Raises:
         NotImplementedError: Dataset unknown.
 
     Returns:
-        Tuple[dgl.DGLGraph, torch.Tensor, int]: [graph, label, n_clusters]
+        Tuple[dgl.DGLGraph, torch.Tensor, int]: [graph, label, n_clusters] or \
+        torch_geometric.data.Data
 
     Example:
         .. code-block:: python
@@ -143,9 +152,12 @@ def load_data(
             f"https://galogm.github.io/graph_datasets_docs/rst/table.html"
         )
 
-    # remove self loop and turn graphs into undirected ones
+    if raw_normalize:
+        graph.ndata["feat"] = F.normalize(graph.ndata["feat"], dim=1)
     if rm_self_loop:
-        graph = dgl.remove_self_loop(graph)
+        graph = graph.remove_self_loop()
+    if add_self_loop:
+        graph = graph.remove_self_loop().add_self_loop()
     if to_simple:
         graph = dgl.to_bidirected(graph, copy_ndata=True)
 
@@ -155,9 +167,13 @@ def load_data(
     new_label = torch.tensor(list(map(lambda x: old2new[x.item()], label)))
     graph.ndata["label"] = new_label
 
+    name = f"{dataset_name}_{source}"
+    graph.name = name
+
     if verbosity:
         print_dataset_info(
-            dataset_name=f"{source.upper()} undirected {dataset_name}\nwithout self-loops",
+            dataset_name=
+            f"{source.upper()} undirected {dataset_name}\n  add_self_loop={add_self_loop} rm_self_loop={rm_self_loop}",
             n_nodes=graph.num_nodes(),
             n_edges=graph.num_edges(),
             n_feats=graph.ndata["feat"].shape[1],
@@ -168,7 +184,7 @@ def load_data(
         return graph, new_label, n_clusters
 
     data = from_dgl(graph)
-    data.name = dataset_name
+    data.name = name
     data.num_classes = n_clusters
     data.x = data.feat
     data.y = data.label

@@ -2,6 +2,13 @@
 
 
 
+## v0.13.3 (2024-08-11)
+
+### Fix
+
+* fix: row normalized ([`4aa7b58`](https://github.com/galogm/graph_datasets/commit/4aa7b58c0b400870242954a57809e002b74f8e21))
+
+
 ## v0.13.2 (2024-06-26)
 
 ### Fix

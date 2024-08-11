@@ -1,6 +1,5 @@
 """Load Graph Datasets
 """
-
 # pylint:disable=protected-access
 import ssl
 from typing import Tuple
@@ -36,7 +35,7 @@ def load_data(
     verbosity: int = 0,
     source: str = "pyg",
     return_type: str = "dgl",
-    raw_normalize: bool = True,
+    row_normalize: bool = True,
     rm_self_loop: bool = True,
     add_self_loop: bool = False,
     to_simple: bool = True,
@@ -52,7 +51,7 @@ def load_data(
         source (str, optional): Source for data loading. Defaults to "pyg".
         return_type (str, optional): Return type of the graphs within ["dgl", "pyg"]. \
             Defaults to "dgl".
-        raw_normalize (str, optional): Row normalize the feature matrix. Defaults to True.
+        row_normalize (str, optional): Row normalize the feature matrix. Defaults to True.
         rm_self_loop (str, optional): Remove self loops. Defaults to True.
         add_self_loop (str, optional): Add self loops no matter what rm_self_loop is. \
             Defaults to True.
@@ -152,8 +151,10 @@ def load_data(
             f"https://galogm.github.io/graph_datasets_docs/rst/table.html"
         )
 
-    if raw_normalize:
+    graph.row_normalized = False
+    if row_normalize:
         graph.ndata["feat"] = F.normalize(graph.ndata["feat"], dim=1)
+        graph.row_normalized = True
     if rm_self_loop:
         graph = graph.remove_self_loop()
     if add_self_loop:

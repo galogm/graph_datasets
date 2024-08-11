@@ -151,7 +151,6 @@ def load_data(
             f"https://galogm.github.io/graph_datasets_docs/rst/table.html"
         )
 
-    graph.row_normalized = False
     if row_normalize:
         graph.ndata["feat"] = F.normalize(graph.ndata["feat"], dim=1)
         graph.row_normalized = True
@@ -170,6 +169,7 @@ def load_data(
 
     name = f"{dataset_name}_{source}"
     graph.name = name
+    graph.row_normalized = row_normalize
 
     if verbosity:
         print_dataset_info(

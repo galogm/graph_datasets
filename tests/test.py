@@ -12,7 +12,7 @@ def main(_source, _dataset):
         directory="./data",
         source=_source,
         verbosity=3,
-        raw_normalize=True,
+        row_normalize=True,
         rm_self_loop=True,
         add_self_loop=True,
         to_simple=True,

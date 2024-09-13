@@ -1,5 +1,6 @@
 """Load Graph Datasets
 """
+
 # pylint:disable=protected-access
 import ssl
 from typing import Tuple
@@ -159,13 +160,20 @@ def load_data(
     if add_self_loop:
         graph = graph.remove_self_loop().add_self_loop()
     if to_simple:
-        graph = dgl.to_bidirected(graph, copy_ndata=True)
+        if dataset_name not in ["proteins"]:
+            # convert directed graphs to simple ones
+            graph = dgl.to_bidirected(graph, copy_ndata=True)
 
-    # make label from 0
-    uni = label.unique()
-    old2new = dict(zip(uni.numpy().tolist(), list(range(len(uni)))))
-    new_label = torch.tensor(list(map(lambda x: old2new[x.item()], label)))
-    graph.ndata["label"] = new_label
+    if dataset_name not in ["proteins"]:
+        # make label from 0
+        uni = label.unique()
+        old2new = dict(zip(uni.numpy().tolist(), list(range(len(uni)))))
+        new_label = torch.tensor(list(map(lambda x: old2new[x.item()], label)))
+        graph.ndata["label"] = new_label
+    else:
+        graph.ndata["label"] = label
+
+        graph.edata.pop("feat")
 
     name = f"{dataset_name}_{source}"
     graph.name = name
@@ -182,7 +190,7 @@ def load_data(
         )
 
     if return_type == "dgl":
-        return graph, new_label, n_clusters
+        return graph, graph.ndata["label"], n_clusters
 
     data = from_dgl(graph)
     data.name = name

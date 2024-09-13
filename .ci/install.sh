@@ -17,6 +17,7 @@ source .env/bin/activate
 
 # # torch cuda 11.3
 python -m pip install "torch>=1.12,<2.2" torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+python3 -m pip install torch-scatter torch-sparse -f https://data.pyg.org/whl/torch-2.1.2+cu121.html
 
 # dgl cuda 11.3
 # add a source if prefered: -i https://pypi.tuna.tsinghua.edu.cn/simple/

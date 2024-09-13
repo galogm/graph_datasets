@@ -1,10 +1,13 @@
 """Datasets from `OGB <https://github.com/snap-stanford/ogb>`_.
 """
+
+import traceback
 from typing import Tuple
 
 import dgl
 import torch
 from ogb.nodeproppred import DglNodePropPredDataset
+from torch_sparse import SparseTensor
 
 from ..data_info import DEFAULT_DATA_DIR
 from ..utils import print_dataset_info
@@ -35,8 +38,15 @@ def load_ogb_data(
         root=directory,
     )
     graph, label = dataset[0]
-    label = label.flatten()
-    graph.ndata["label"] = label
+    if dataset_name not in ["proteins"]:
+        graph.ndata["label"] = label.flatten()
+    else:
+        graph.ndata["label"] = label
+        # Adapted from https://github.com/qitianwu/SGFormer
+        edge_index = torch.stack(graph.edges())
+        edge_feat = graph.edata["feat"]
+        edge_index_ = to_sparse_tensor(edge_index, edge_feat, graph.num_nodes())
+        graph.ndata["feat"] = edge_index_.mean(dim=1)
 
     if verbosity and verbosity > 1:
         print_dataset_info(
@@ -47,4 +57,47 @@ def load_ogb_data(
             n_clusters=dataset.num_classes,
         )
 
+    try:
+        splits = dataset.get_idx_split()
+    except Exception as _:
+        traceback.print_exc()
+        splits = None
+
+    if splits is not None:
+        graph.ndata["train_mask"] = (
+            torch.zeros(graph.num_nodes()).scatter_(
+                0,
+                splits["train"],
+                1,
+            ).bool()
+        )
+        graph.ndata["val_mask"] = (
+            torch.zeros(graph.num_nodes()).scatter_(
+                0,
+                splits["valid"],
+                1,
+            ).bool()
+        )
+        graph.ndata["test_mask"] = (
+            torch.zeros(graph.num_nodes()).scatter_(
+                0,
+                splits["test"],
+                1,
+            ).bool()
+        )
+
     return graph, label, dataset.num_classes
+
+
+def to_sparse_tensor(edge_index, edge_feat, num_nodes):
+    """converts the edge_index into SparseTensor"""
+    num_edges = edge_index.size(1)
+    (row, col), N, E = edge_index, num_nodes, num_edges
+    perm = (col * N + row).argsort()
+    row, col = row[perm], col[perm]
+    value = edge_feat[perm]
+    adj_t = SparseTensor(row=col, col=row, value=value, sparse_sizes=(N, N), is_sorted=True)
+    # Pre-process some important attributes.
+    adj_t.storage.rowptr()
+    adj_t.storage.csr2csc()
+    return adj_t

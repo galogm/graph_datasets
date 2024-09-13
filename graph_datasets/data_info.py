@@ -1,5 +1,6 @@
 """Data source information.
 """
+
 # pylint:disable=duplicate-code
 #: Default directory for data saving.
 DEFAULT_DATA_DIR = "./data"
@@ -74,7 +75,7 @@ OGB_DATASETS = [
     "products",
     "arxiv",
     # "mag",
-    # "proteins",
+    "proteins",
     # "papers100M",
 ]
 #: Datasets in paper

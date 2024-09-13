@@ -2,6 +2,13 @@
 
 
 
+## v0.14.0 (2024-09-13)
+
+### Feature
+
+* feat: add ogb-proteins ([`89ed0c9`](https://github.com/galogm/graph_datasets/commit/89ed0c98afda372329a7622c475498d676517868))
+
+
 ## v0.13.4 (2024-08-11)
 
 ### Fix

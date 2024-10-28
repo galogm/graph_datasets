@@ -1,8 +1,11 @@
+# for the commented dependencies, see installation scripts in .ci/install.sh
+# torch>=1.12
+# torch_sparse
+# torch-scatter
+# dgl>=1.1
 ogb
 gdown
 wget
-dgl>=1.1
-torch>=1.12
 torch_geometric>=2.0
 texttable
 pandas

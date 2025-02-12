@@ -164,7 +164,7 @@ def load_data(
             # convert directed graphs to simple ones
             graph = dgl.to_bidirected(graph, copy_ndata=True)
 
-    if dataset_name not in ["proteins"]:
+    if dataset_name not in ["proteins", "pokec"]:
         # make label from 0
         uni = label.unique()
         old2new = dict(zip(uni.numpy().tolist(), list(range(len(uni)))))
@@ -173,11 +173,13 @@ def load_data(
     else:
         graph.ndata["label"] = label
 
-        graph.edata.pop("feat")
+        if dataset_name in ["proteins"]:
+            graph.edata.pop("feat")
 
     name = f"{dataset_name}_{source}"
     graph.name = name
     graph.row_normalized = row_normalize
+    graph.directed = not to_simple
 
     if verbosity:
         print_dataset_info(
@@ -200,6 +202,7 @@ def load_data(
     data.num_nodes = graph.num_nodes()
     data.num_edges = graph.num_edges()
     data.edge_index = torch.stack(graph.edges(), dim=0)
+    data.directed = not to_simple
 
     return data
 

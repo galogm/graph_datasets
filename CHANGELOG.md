@@ -2,6 +2,17 @@
 
 
 
+## v0.14.1 (2025-02-12)
+
+### Chore
+
+* chore: update dependencies ([`3c414dc`](https://github.com/galogm/graph_datasets/commit/3c414dc3d40152955cf6218302225a836765d86c))
+
+### Fix
+
+* fix: pokec label should not be re-labeled ([`ede7494`](https://github.com/galogm/graph_datasets/commit/ede7494e8329ecd37f1b19f7ee73b784cea0eb46))
+
+
 ## v0.14.0 (2024-09-13)
 
 ### Feature

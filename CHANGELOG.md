@@ -1,10 +1,20 @@
 # CHANGELOG
 
+## v1.0.1 (2025-10-10)
+
+### Chore
+
+* chore: upate semantic-release ([`4a3ad01`](https://github.com/galogm/graph_datasets/commit/4a3ad015d49063a9b948cc37495dfdea9fef11e9))
+
+### Fix
+
+* fix: formatter and linter all files ([`cda51fa`](https://github.com/galogm/graph_datasets/commit/cda51fa7b1edcb5f163ccf48cab3c79fb86a5d67))
+
 ## v1.0.0 (2025-10-10)
 
-### Features
+### Feature
 
-- Add logging and update formatter, semantic-release ([`2db91c3`](https://github.com/galogm/graph_datasets/commit/2db91c37e8273ef14e3945ecea90c365ff757cd2))
+* feat: add logging and update formatter, semantic-release ([`2db91c3`](https://github.com/galogm/graph_datasets/commit/2db91c37e8273ef14e3945ecea90c365ff757cd2))
 
 ## v0.14.1 (2025-02-12)
 
@@ -16,13 +26,11 @@
 
 * fix: pokec label should not be re-labeled ([`ede7494`](https://github.com/galogm/graph_datasets/commit/ede7494e8329ecd37f1b19f7ee73b784cea0eb46))
 
-
 ## v0.14.0 (2024-09-13)
 
 ### Feature
 
 * feat: add ogb-proteins ([`89ed0c9`](https://github.com/galogm/graph_datasets/commit/89ed0c98afda372329a7622c475498d676517868))
-
 
 ## v0.13.4 (2024-08-11)
 
@@ -30,20 +38,17 @@
 
 * fix: row_normalized ([`ff31bbb`](https://github.com/galogm/graph_datasets/commit/ff31bbb1304d0dc1049389d877f2cdb033f71ab8))
 
-
 ## v0.13.3 (2024-08-11)
 
 ### Fix
 
 * fix: row normalized ([`4aa7b58`](https://github.com/galogm/graph_datasets/commit/4aa7b58c0b400870242954a57809e002b74f8e21))
 
-
 ## v0.13.2 (2024-06-26)
 
 ### Fix
 
 * fix: add raw_normalize and add_self_loop ([`1103897`](https://github.com/galogm/graph_datasets/commit/1103897157ec3ef520ccd409912f4494b6682a96))
-
 
 ## v0.13.1 (2024-02-29)
 
@@ -55,7 +60,6 @@
 
 * fix: enable load_data to return pyg data ([`408a65a`](https://github.com/galogm/graph_datasets/commit/408a65aff7f5c667b9b7aaabd8b105dd42bdef39))
 
-
 ## v0.13.0 (2024-02-29)
 
 ### Feature
@@ -65,7 +69,6 @@
 ### Fix
 
 * fix: update n_init of kmeans ([`bf9779a`](https://github.com/galogm/graph_datasets/commit/bf9779ad11516c9c029c42ae0042af76571aca47))
-
 
 ## v0.12.0 (2024-01-03)
 
@@ -77,7 +80,6 @@
 
 * fix: add format result ([`81f7be7`](https://github.com/galogm/graph_datasets/commit/81f7be727c837caec773babd04b859122d657287))
 
-
 ## v0.11.2 (2024-01-03)
 
 ### Fix
@@ -86,15 +88,13 @@
 
 ### Unknown
 
-* Merge branch &#39;master&#39; of github.com:galogm/graph_datasets ([`68bdd22`](https://github.com/galogm/graph_datasets/commit/68bdd229082cd32129da0babfe7a12adff0ebd1d))
-
+* Merge branch 'master' of github.com:galogm/graph_datasets ([`68bdd22`](https://github.com/galogm/graph_datasets/commit/68bdd229082cd32129da0babfe7a12adff0ebd1d))
 
 ## v0.11.1 (2024-01-02)
 
 ### Fix
 
 * fix: add xticks and xtick_labels for draw_chart ([`eaa5422`](https://github.com/galogm/graph_datasets/commit/eaa5422ad8aa5158e8fabde2200674776f3dd914))
-
 
 ## v0.11.0 (2023-12-25)
 
@@ -108,8 +108,7 @@
 
 ### Unknown
 
-* Merge branch &#39;master&#39; of github.com:galogm/graph_datasets ([`c490374`](https://github.com/galogm/graph_datasets/commit/c490374ca6d2c6a175cefd3e7335c8b46dfe2d63))
-
+* Merge branch 'master' of github.com:galogm/graph_datasets ([`c490374`](https://github.com/galogm/graph_datasets/commit/c490374ca6d2c6a175cefd3e7335c8b46dfe2d63))
 
 ## v0.10.0 (2023-12-21)
 
@@ -127,7 +126,6 @@
 
 * fix: sort_head of csv2file ([`d1dc3e6`](https://github.com/galogm/graph_datasets/commit/d1dc3e6447ea869a18127e28ca72ba36b392ab6b))
 
-
 ## v0.9.0 (2023-12-19)
 
 ### Breaking
@@ -140,13 +138,11 @@ BREAKING CHANGE: the protocal of the parameters of csv3file changes ([`7accdff`]
 
 * chore: update docs ([`ca92e18`](https://github.com/galogm/graph_datasets/commit/ca92e18d0b1a1fae18174517ea5b8244b8671429))
 
-
 ## v0.8.3 (2023-12-18)
 
 ### Fix
 
 * fix: error when no train_mask in dgl ([`17635d5`](https://github.com/galogm/graph_datasets/commit/17635d529ebd2fae75d97a4dfd1cc86bb6085267))
-
 
 ## v0.8.2 (2023-12-14)
 
@@ -154,13 +150,11 @@ BREAKING CHANGE: the protocal of the parameters of csv3file changes ([`7accdff`]
 
 * fix: update dependencies ([`b409c74`](https://github.com/galogm/graph_datasets/commit/b409c7461cbdf1d57469b31df8b54da964fc89c6))
 
-
 ## v0.8.1 (2023-12-12)
 
 ### Fix
 
 * fix: remove row normalization of pyg and add train-test-val mask to pyg ([`434b558`](https://github.com/galogm/graph_datasets/commit/434b5589eabe519754f6db72cd8f03417afddbc4))
-
 
 ## v0.8.0 (2023-11-23)
 
@@ -178,8 +172,7 @@ BREAKING CHANGE: the protocal of the parameters of csv3file changes ([`7accdff`]
 
 ---------
 
-Co-authored-by: galogm &lt;gumingwork@gmail.com&gt; ([`7b46d03`](https://github.com/galogm/graph_datasets/commit/7b46d03d67d3f0c058989076ce923201371c9f4f))
-
+Co-authored-by: galogm <gumingwork@gmail.com> ([`7b46d03`](https://github.com/galogm/graph_datasets/commit/7b46d03d67d3f0c058989076ce923201371c9f4f))
 
 ## v0.7.0 (2023-11-13)
 
@@ -191,13 +184,11 @@ Co-authored-by: galogm &lt;gumingwork@gmail.com&gt; ([`7b46d03`](https://github.
 
 * feat: update python version ([`e810f4e`](https://github.com/galogm/graph_datasets/commit/e810f4e27d952618be5b14a63f90d4b4eee7b432))
 
-
 ## v0.6.0 (2023-11-06)
 
 ### Feature
 
 * feat: add squirrel and chameleon in critial ([`2454e3d`](https://github.com/galogm/graph_datasets/commit/2454e3d8ca1d69eac9b60c2cc0d379895bf7c3fa))
-
 
 ## v0.5.2 (2023-09-13)
 
@@ -215,12 +206,11 @@ Co-authored-by: galogm &lt;gumingwork@gmail.com&gt; ([`7b46d03`](https://github.
 
 fix: compute nmi, ami, ari after mapping ([`0e48da0`](https://github.com/galogm/graph_datasets/commit/0e48da05aba162f9c8bc275dd40364521443e820))
 
-
 ## v0.5.1 (2023-09-07)
 
 ### Chore
 
-* chore: updsate docs &amp; config &amp; readme and add CONTRIBUTING.md ([`f88b306`](https://github.com/galogm/graph_datasets/commit/f88b306f73d5b4c65c3d31abeeffb37716357b76))
+* chore: updsate docs & config & readme and add CONTRIBUTING.md ([`f88b306`](https://github.com/galogm/graph_datasets/commit/f88b306f73d5b4c65c3d31abeeffb37716357b76))
 
 ### Fix
 
@@ -233,7 +223,6 @@ fix: compute nmi, ami, ari after mapping ([`0e48da0`](https://github.com/galogm/
 * Merge pull request #20 from galogm/feat/0.5.1
 
 Feat/0.5.1 ([`52658bf`](https://github.com/galogm/graph_datasets/commit/52658bfbeb16f4d17b0d65c3277fe381cfe8bd12))
-
 
 ## v0.5.0 (2023-09-06)
 
@@ -273,7 +262,6 @@ chore: add doc repo as submodule ([`6628a6a`](https://github.com/galogm/graph_da
 
 chore: update docs ([`6825929`](https://github.com/galogm/graph_datasets/commit/6825929f9a00e1a653451f9fa0d60fe0c0ac9665))
 
-
 ## v0.4.0 (2023-08-21)
 
 ### Chore
@@ -284,19 +272,15 @@ chore: update docs ([`6825929`](https://github.com/galogm/graph_datasets/commit/
 
 * feat: add output and model management utils ([`e717ce1`](https://github.com/galogm/graph_datasets/commit/e717ce103de562758179466048fff3b068ef84dc))
 
+### Fix
+
+* fix: update toml settings and several val names & configs ([`2e101d2`](https://github.com/galogm/graph_datasets/commit/2e101d2b3a018c08d99374e6b0ee67c5cca706ea))
+
 ### Unknown
 
 * Merge pull request #13 from galogm/feat/0.4.0
 
 Feat/0.4.0 ([`6cc6239`](https://github.com/galogm/graph_datasets/commit/6cc623905ffb49fa9fe1c12552af53d34c69e88d))
-
-
-## v0.3.1 (2023-08-02)
-
-### Fix
-
-* fix: update toml settings and several val names &amp; configs ([`2e101d2`](https://github.com/galogm/graph_datasets/commit/2e101d2b3a018c08d99374e6b0ee67c5cca706ea))
-
 
 ## v0.3.0 (2023-08-02)
 
@@ -322,7 +306,6 @@ Feat/0.4.0 ([`6cc6239`](https://github.com/galogm/graph_datasets/commit/6cc62390
 
 * refactor: split different sources ([`5e79f87`](https://github.com/galogm/graph_datasets/commit/5e79f8704eabf61c8131d7f04ca305ea2a7fd24c))
 
-
 ## v0.2.0 (2023-05-25)
 
 ### Chore
@@ -343,7 +326,6 @@ Feat/0.4.0 ([`6cc6239`](https://github.com/galogm/graph_datasets/commit/6cc62390
 
 Feat/0.1.3 ([`f9058ca`](https://github.com/galogm/graph_datasets/commit/f9058ca294eeabfefec7f3066e04a5e5e460ae37))
 
-
 ## v0.1.2 (2023-05-12)
 
 ### Chore
@@ -360,13 +342,11 @@ Feat/0.1.3 ([`f9058ca`](https://github.com/galogm/graph_datasets/commit/f9058ca2
 
 Fix/0.1.2 ([`96f1c22`](https://github.com/galogm/graph_datasets/commit/96f1c226c8c11cdccdb36d2b303bb887b47acac7))
 
-
 ## v0.1.1 (2023-05-12)
 
 ### Fix
 
 * fix: fix DGL verbose and export load_data func ([`ea77e9c`](https://github.com/galogm/graph_datasets/commit/ea77e9ce6efc3deb871a90fcf3cb461340310ba6))
-
 
 ## v0.1.0 (2023-05-12)
 

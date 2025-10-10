@@ -65,3 +65,4 @@ if __name__ == "__main__":
     for source, datasets in DATASETS.items():
         for dataset in datasets:
             main(source, dataset)
+            exit(1)

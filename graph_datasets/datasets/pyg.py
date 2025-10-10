@@ -1,19 +1,22 @@
 """Datasets from `PyG <https://github.com/pyg-team/pytorch_geometric>`_.
 """
+
 import os
 from typing import Tuple
 
 import dgl
 import torch
-from torch_geometric.datasets import Actor
-from torch_geometric.datasets import Amazon
-from torch_geometric.datasets import Coauthor
-from torch_geometric.datasets import CoraFull
-from torch_geometric.datasets import Planetoid
-from torch_geometric.datasets import Reddit
-from torch_geometric.datasets import WebKB
-from torch_geometric.datasets import WikiCS
-from torch_geometric.datasets import WikipediaNetwork
+from torch_geometric.datasets import (
+    Actor,
+    Amazon,
+    Coauthor,
+    CoraFull,
+    Planetoid,
+    Reddit,
+    WebKB,
+    WikiCS,
+    WikipediaNetwork,
+)
 
 from ..data_info import DEFAULT_DATA_DIR
 from ..utils import print_dataset_info

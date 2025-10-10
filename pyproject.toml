@@ -57,3 +57,6 @@ version_variables = [
 version_toml = ["pyproject.toml:project.version"]
 major_on_zero = false
 changelog_file = "CHANGELOG.md"
+
+[tool.isort]
+profile = "black"

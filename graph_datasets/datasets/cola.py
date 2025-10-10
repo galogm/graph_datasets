@@ -1,5 +1,6 @@
 """Datasets from the paper `CoLA <https://github.com/GRAND-Lab/CoLA>`_.
 """
+
 # pylint:disable=duplicate-code
 import os
 from typing import Tuple
@@ -10,10 +11,8 @@ import scipy.io as sio
 import torch
 import wget
 
-from ..data_info import COLA_URL
-from ..data_info import DEFAULT_DATA_DIR
-from ..utils import bar_progress
-from ..utils import print_dataset_info
+from ..data_info import COLA_URL, DEFAULT_DATA_DIR
+from ..utils import bar_progress, print_dataset_info
 
 
 def load_cola_data(

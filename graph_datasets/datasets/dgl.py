@@ -1,5 +1,6 @@
 """Datasets from `DGL <https://github.com/dmlc/dgl>`_.
 """
+
 from typing import Tuple
 
 import dgl
@@ -57,14 +58,14 @@ def load_dgl_data(
             reorder=False,
         )
     elif dataset_name in [
-            "chameleon",
-            "squirrel",
-            "actor",
-            "cornell",
-            "texas",
-            "wisconsin",
-            "corafull",
-            "reddit",
+        "chameleon",
+        "squirrel",
+        "actor",
+        "cornell",
+        "texas",
+        "wisconsin",
+        "corafull",
+        "reddit",
     ]:
         dataset = getattr(dgl.data, dataset_map[dataset_name])(
             raw_dir=directory,

@@ -1,13 +1,16 @@
 """Common utils.
 """
+
 import os
 import sys
-from typing import Any
-from typing import Dict
-from typing import List
+from typing import Any, Dict, List, Optional, Union
 
 import gdown
 from texttable import Texttable
+
+from .logging import get_logger
+
+logger = get_logger(__name__)
 
 
 def format_value(value) -> Any:
@@ -26,12 +29,12 @@ def format_value(value) -> Any:
 
 def tab_printer(
     args: Dict,
-    thead: List[str] = None,
-    cols_align: List[str] = None,
-    cols_valign: List[str] = None,
-    cols_dtype: List[str] = None,
+    thead: Optional[List[str]] = None,
+    cols_align: Optional[List[str]] = None,
+    cols_valign: Optional[List[str]] = None,
+    cols_dtype: Optional[List[str]] = None,
     sort: bool = True,
-) -> None:
+) -> Union[str, None]:
     """Function to print the logs in a nice tabular format.
 
 
@@ -56,7 +59,8 @@ def tab_printer(
             [
                 k.replace("_", " "),
                 f"{args[k]}" if isinstance(args[k], bool) else format_value(args[k]),
-            ] for k in keys
+            ]
+            for k in keys
         ]
     )
     if cols_align is not None:
@@ -67,7 +71,7 @@ def tab_printer(
         table.set_cols_dtype(cols_dtype)
     table.add_rows(params)
 
-    print(table.draw())
+    logger.info(f"\n{table.draw()}")
 
     return table.draw()
 
@@ -79,8 +83,10 @@ def download_tip(info: Dict) -> None:
         data_file (str): filepath.
         url (str): url for downloading.
     """
-    info["Tip"] = "If the download fails, \
+    info["Tip"] = (
+        "If the download fails, \
 use the 'Download URL' to download manually and move the file to the 'Save Path'."
+    )
 
     tab_printer(info)
 

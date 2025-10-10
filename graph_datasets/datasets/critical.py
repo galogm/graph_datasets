@@ -3,6 +3,7 @@
         Are We Really Making Progress?\
               <https://openreview.net/pdf?id=tJbbQfw-5wv>`_.
 """
+
 import os
 from typing import Tuple
 
@@ -11,11 +12,8 @@ import numpy as np
 import torch
 import wget
 
-from ..data_info import CRITICAL_URL
-from ..data_info import DEFAULT_DATA_DIR
-from ..utils import bar_progress
-from ..utils import download_tip
-from ..utils import print_dataset_info
+from ..data_info import CRITICAL_URL, DEFAULT_DATA_DIR
+from ..utils import bar_progress, download_tip, print_dataset_info
 
 
 def load_critical_dataset(

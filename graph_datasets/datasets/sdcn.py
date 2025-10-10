@@ -1,5 +1,6 @@
 """Datasets from the paper `SDCN <https://github.com/bdy9527/SDCN>`_.
 """
+
 import os
 from typing import Tuple
 
@@ -8,10 +9,8 @@ import numpy as np
 import torch
 import wget
 
-from ..data_info import DEFAULT_DATA_DIR
-from ..data_info import SDCN_URL
-from ..utils import bar_progress
-from ..utils import print_dataset_info
+from ..data_info import DEFAULT_DATA_DIR, SDCN_URL
+from ..utils import bar_progress, print_dataset_info
 
 
 def load_sdcn_data(

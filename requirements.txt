@@ -9,3 +9,4 @@ wget
 torch_geometric>=2.0
 texttable
 pandas
+colorlog

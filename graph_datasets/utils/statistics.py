@@ -1,5 +1,6 @@
 """Graph information statistics.
 """
+
 import gc
 import math
 
@@ -8,6 +9,10 @@ import numpy as np
 import scipy.sparse as sp
 import torch
 from dgl import function as fn
+
+from .logging import get_logger
+
+logger = get_logger(__name__)
 
 
 def node_homo(adj: sp.spmatrix, labels: torch.Tensor) -> float:
@@ -39,8 +44,9 @@ def edge_homo(adj: sp.spmatrix, labels: torch.Tensor) -> float:
         float: edge homophily.
     """
     adj_coo = adj.tocoo()
-    num_intra_class_edges = ((labels[adj_coo.col] == labels[adj_coo.row]).cpu().numpy() *
-                             adj.data).sum()
+    num_intra_class_edges = (
+        (labels[adj_coo.col] == labels[adj_coo.row]).cpu().numpy() * adj.data
+    ).sum()
     num_edges = adj.sum()
     del adj_coo
     del adj
@@ -141,7 +147,7 @@ def statistics(
 
     except MemoryError:
         # only works on variable initialization
-        print("2-hop graph OOM.")
+        logger.info("2-hop graph OOM.")
         dic["n_edges_2h"] = np.nan
         dic["eh_2h"] = np.nan
         dic["ie_2h"] = np.nan

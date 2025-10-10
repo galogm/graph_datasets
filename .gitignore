@@ -122,7 +122,6 @@ celerybeat.pid
 # Environments
 .env
 .venv
-.venv*
 env/
 venv/
 ENV/
@@ -181,4 +180,3 @@ docs/_build
 docs/rst_tmp
 
 .python-version
-test.py

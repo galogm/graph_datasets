@@ -1,6 +1,6 @@
 repos:
-    # -   repo: https://github.com/pre-commit/pre-commit-hooks
     - repo: git@github.com:pre-commit/pre-commit-hooks
+      # - repo: https://github.com/pre-commit/pre-commit-hooks
       rev: v4.4.0
       hooks:
           - id: trailing-whitespace
@@ -10,11 +10,20 @@ repos:
           - id: check-merge-conflict
           - id: check-yaml
           - id: end-of-file-fixer
-    # -   repo: https://github.com/asottile/reorder_python_imports
-    - repo: git@github.com:asottile/reorder_python_imports
-      rev: v3.9.0
+    - repo: git@github.com:pycqa/isort
+      # - repo: https://github.com/pycqa/isort
+      rev: 5.12.0
       hooks:
-          - id: reorder-python-imports
+          - id: isort
+            name: isort (python)
+            exclude: ^docs/
+          - id: isort
+            name: isort (cython)
+            types: [cython]
+            exclude: ^docs/
+          - id: isort
+            name: isort (pyi)
+            types: [pyi]
             exclude: ^docs/
     - repo: local
       hooks:
@@ -25,12 +34,12 @@ repos:
             types: [python]
             exclude: ^docs/
             verbose: true
-          - id: yapf
-            name: yapf
-            entry: yapf -r -i
-            language: system
-            types: [python]
-            exclude: ^docs/
+        #   - id: yapf
+        #     name: yapf
+        #     entry: yapf -r -i
+        #     language: system
+        #     types: [python]
+        #     exclude: ^docs/
           - id: pylint
             name: pylint
             entry: pylint

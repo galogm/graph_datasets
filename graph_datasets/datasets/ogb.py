@@ -65,25 +65,31 @@ def load_ogb_data(
 
     if splits is not None:
         graph.ndata["train_mask"] = (
-            torch.zeros(graph.num_nodes()).scatter_(
+            torch.zeros(graph.num_nodes())
+            .scatter_(
                 0,
                 splits["train"],
                 1,
-            ).bool()
+            )
+            .bool()
         )
         graph.ndata["val_mask"] = (
-            torch.zeros(graph.num_nodes()).scatter_(
+            torch.zeros(graph.num_nodes())
+            .scatter_(
                 0,
                 splits["valid"],
                 1,
-            ).bool()
+            )
+            .bool()
         )
         graph.ndata["test_mask"] = (
-            torch.zeros(graph.num_nodes()).scatter_(
+            torch.zeros(graph.num_nodes())
+            .scatter_(
                 0,
                 splits["test"],
                 1,
-            ).bool()
+            )
+            .bool()
         )
 
     return graph, label, dataset.num_classes

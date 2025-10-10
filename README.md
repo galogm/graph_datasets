@@ -28,8 +28,15 @@ graph, label, n_clusters = load_data(
     directory='./data',
     source='pyg',
     verbosity=1,
+    return_type= "dgl",
+    row_normalize= True,
+    rm_self_loop= True,
+    add_self_loop= False,
+    to_simple= True,
 )
 ```
+
+- **Tip**: set github proxy in hosts following [GitHub-IP-hosts](https://github.com/ittuann/GitHub-IP-hosts?tab=readme-ov-file) if you have problem downloading datasets from github resources.
 
 <!-- - DEV
 

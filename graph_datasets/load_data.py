@@ -3,8 +3,7 @@
 
 # pylint:disable=protected-access
 import ssl
-from typing import Tuple
-from typing import Union
+from typing import Tuple, Union
 
 import dgl
 import torch
@@ -12,21 +11,25 @@ import torch.nn.functional as F
 from torch_geometric.data import Data
 from torch_geometric.utils import from_dgl
 
-from .data_info import COLA_DATASETS
-from .data_info import CRITICAL_DATASETS
-from .data_info import DEFAULT_DATA_DIR
-from .data_info import DGL_DATASETS
-from .data_info import LINKX_DATASETS
-from .data_info import OGB_DATASETS
-from .data_info import PYG_DATASETS
-from .data_info import SDCN_DATASETS
-from .datasets import load_cola_data
-from .datasets import load_critical_dataset
-from .datasets import load_dgl_data
-from .datasets import load_linkx_data
-from .datasets import load_ogb_data
-from .datasets import load_pyg_data
-from .datasets import load_sdcn_data
+from .data_info import (
+    COLA_DATASETS,
+    CRITICAL_DATASETS,
+    DEFAULT_DATA_DIR,
+    DGL_DATASETS,
+    LINKX_DATASETS,
+    OGB_DATASETS,
+    PYG_DATASETS,
+    SDCN_DATASETS,
+)
+from .datasets import (
+    load_cola_data,
+    load_critical_dataset,
+    load_dgl_data,
+    load_linkx_data,
+    load_ogb_data,
+    load_pyg_data,
+    load_sdcn_data,
+)
 from .utils import print_dataset_info
 
 
@@ -92,14 +95,17 @@ def load_data(
 
     """
     dataset_name = (
-        dataset_name.lower() if dataset_name not in [
+        dataset_name.lower()
+        if dataset_name
+        not in [
             "papers100M",
             "Penn94",
             "Amherst41",
             "Cornell5",
             "Johns Hopkins55",
             "Reed98",
-        ] else dataset_name
+        ]
+        else dataset_name
     )
     ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -183,8 +189,7 @@ def load_data(
 
     if verbosity:
         print_dataset_info(
-            dataset_name=
-            f"{source.upper()} undirected {dataset_name}\n  add_self_loop={add_self_loop} rm_self_loop={rm_self_loop}",
+            dataset_name=f"{source.upper()} undirected {dataset_name}\n  add_self_loop={add_self_loop} rm_self_loop={rm_self_loop}",
             n_nodes=graph.num_nodes(),
             n_edges=graph.num_edges(),
             n_feats=graph.ndata["feat"].shape[1],

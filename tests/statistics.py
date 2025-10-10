@@ -1,15 +1,17 @@
 """Statistics
 """
+
 # pylint:disable=duplicate-code
 import csv
 import os
-from pathlib import Path
-from pathlib import PurePath
+from pathlib import Path, PurePath
 from typing import Tuple
 
 from graph_datasets import load_data
 from graph_datasets.data_info import DATASETS
-from graph_datasets.utils import statistics
+from graph_datasets.utils import get_logger, statistics
+
+logger = get_logger(__name__)
 
 
 def make_parent_dirs(target_path: PurePath) -> None:
@@ -100,57 +102,57 @@ def main():
     }
     for source, datasets in DATASETS.items():
         if source in [
-                # remove the comment of the name to enable its calculation
-                "pyg",
-                "dgl",
-                "ogb",
-                "sdcn",
-                "cola",
-                "linkx",
+            # remove the comment of the name to enable its calculation
+            "pyg",
+            "dgl",
+            "ogb",
+            "sdcn",
+            "cola",
+            "linkx",
         ]:
             continue
         for dataset in datasets:
-            print(dataset)
+            logger.info(dataset)
             if dataset in [
-                    # "products",
-                    "mag",
-                    "proteins",
-                    "papers100M",
-                    # "reddit",
-                    # "twitch-gamers",
-                    # "wiki",
-                    # "arxiv",
-                    # "cora",
-                    # "citeseer",
-                    # "pubmed",
-                    # "corafull",
-                    # "chameleon",
-                    # "squirrel",
-                    # "actor",
-                    # "film",
-                    # "cornell",
-                    # "texas",
-                    # "wisconsin",
-                    # "computers",
-                    # "photo",
-                    # "cs",
-                    # "physics",
-                    # "wikics",
-                    # "dblp",
-                    # "acm",
-                    # "blogcatalog",
-                    # "flickr",
-                    # "snap-patents",
-                    # "pokec",
-                    # "genius",
-                    # "arxiv-year",
-                    # "Penn94",
-                    # "yelp-chi",
-                    # "deezer-europe",
-                    # "Amherst41",
-                    # "Cornell5",
-                    # "Johns Hopkins55",
-                    # "Reed98",
+                # "products",
+                "mag",
+                "proteins",
+                "papers100M",
+                # "reddit",
+                # "twitch-gamers",
+                # "wiki",
+                # "arxiv",
+                # "cora",
+                # "citeseer",
+                # "pubmed",
+                # "corafull",
+                # "chameleon",
+                # "squirrel",
+                # "actor",
+                # "film",
+                # "cornell",
+                # "texas",
+                # "wisconsin",
+                # "computers",
+                # "photo",
+                # "cs",
+                # "physics",
+                # "wikics",
+                # "dblp",
+                # "acm",
+                # "blogcatalog",
+                # "flickr",
+                # "snap-patents",
+                # "pokec",
+                # "genius",
+                # "arxiv-year",
+                # "Penn94",
+                # "yelp-chi",
+                # "deezer-europe",
+                # "Amherst41",
+                # "Cornell5",
+                # "Johns Hopkins55",
+                # "Reed98",
             ]:
                 continue
             graph, labels, n_clusters = load_data(

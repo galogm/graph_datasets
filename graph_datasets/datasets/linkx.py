@@ -1,5 +1,6 @@
 """Datasets from the paper `LINKX <https://github.com/CUAI/Non-Homophily-Large-Scale>`_.
 """
+
 # pylint:disable=invalid-name,duplicate-code
 import os
 from typing import Tuple
@@ -14,13 +15,16 @@ import wget
 from ogb.nodeproppred import DglNodePropPredDataset
 from sklearn.preprocessing import label_binarize
 
-from ..data_info import DEFAULT_DATA_DIR
-from ..data_info import LINKX_DRIVE_ID
-from ..data_info import LINKX_URL
-from ..utils import bar_progress
-from ..utils import download_from_google_drive
-from ..utils import download_tip
-from ..utils import print_dataset_info
+from ..data_info import DEFAULT_DATA_DIR, LINKX_DRIVE_ID, LINKX_URL
+from ..utils import (
+    bar_progress,
+    download_from_google_drive,
+    download_tip,
+    get_logger,
+    print_dataset_info,
+)
+
+logger = get_logger(__name__)
 
 
 def even_quantile_labels(vals, n_classes, verbosity: int = 0):
@@ -43,9 +47,9 @@ def even_quantile_labels(vals, n_classes, verbosity: int = 0):
     label[vals >= lower] = n_classes - 1
     interval_lst.append((lower, np.inf))
     if verbosity and verbosity > 1:
-        print("Generated Class Label Intervals:")
+        logger.info("Generated Class Label Intervals:")
         for class_idx, interval in enumerate(interval_lst):
-            print(f"Class {class_idx}: [{interval[0]}, {interval[1]})]")
+            logger.info(f"Class {class_idx}: [{interval[0]}, {interval[1]})]")
     return label
 
 
@@ -84,8 +88,11 @@ def load_linkx_data(
         else:
             g = dgl.graph((data_mat["edge_index"][0], data_mat["edge_index"][1]))
             g.ndata["feat"] = torch.tensor(
-                data_mat["node_feat"].todense()
-                if sp.issparse(data_mat["node_feat"]) else data_mat["node_feat"],
+                (
+                    data_mat["node_feat"].todense()
+                    if sp.issparse(data_mat["node_feat"])
+                    else data_mat["node_feat"]
+                ),
                 dtype=torch.float,
             )
 
@@ -98,25 +105,25 @@ def load_linkx_data(
 
         num_classes = g.ndata["label"].unique().shape[0]
     elif dataset_name in [
-            "cornell",
-            "chameleon",
-            "film",
-            "squirrel",
-            "texas",
-            "wisconsin",
-            "genius",
-            "deezer-europe",
+        "cornell",
+        "chameleon",
+        "film",
+        "squirrel",
+        "texas",
+        "wisconsin",
+        "genius",
+        "deezer-europe",
     ]:
         g, _, num_classes = load_linkx_github(
             dataset_name=dataset_name,
             directory=directory,
         )
     elif dataset_name in [
-            "Penn94",
-            "Amherst41",
-            "Cornell5",
-            "Johns Hopkins55",
-            "Reed98",
+        "Penn94",
+        "Amherst41",
+        "Cornell5",
+        "Johns Hopkins55",
+        "Reed98",
     ]:
         g, _, num_classes = load_fb100_data(
             dataset_name=dataset_name,

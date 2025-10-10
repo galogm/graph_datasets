@@ -6,19 +6,29 @@
 
 </div>
 
-## Installation
+A unified package for loading popular homo/hetero-philic graph datasets from various sources (PyG, DGL, OGB, LinkX, etc.) with preprocessing and format conversion support (DGL, PyG).
 
-- python>=3.8
-- torch>=1.12
-- torch_geometric>=2.0
-- dgl>=1.1
+---
+
+## 🚀 Installation
+
+**Requirements**
+* python>=3.8
+* torch>=1.12
+* torch_geometric>=2.0
+* dgl>=1.1
+
+Install via **pip**:
 
 ```bash
 $ python -m pip install graph_datasets
 ```
 
-## Usage
-See [Graph Datasets](https://galogm.github.io/graph_datasets_docs) for docs.
+---
+
+## 💡 Usage
+
+For full documentation, see the [Graph Datasets](https://galogm.github.io/graph_datasets_docs).
 
 ```python
 from graph_datasets import load_data
@@ -36,26 +46,15 @@ graph, label, n_clusters = load_data(
 )
 ```
 
-- **Tip**: set github proxy in hosts following [GitHub-IP-hosts](https://github.com/ittuann/GitHub-IP-hosts?tab=readme-ov-file) if you have problem downloading datasets from github resources.
+> **Tip:**
+> If you experience issues downloading datasets from GitHub sources, set up a GitHub proxy in your hosts file as described in [GitHub-IP-hosts](https://github.com/ittuann/GitHub-IP-hosts?tab=readme-ov-file).
 
-<!-- - DEV
+---
 
-```bash
-# install cuda 11.3 if necessary
-$ sudo bash scripts/cuda.sh
-# see installation logs in logs/install.log
-$ nohup bash scripts/install-dev.sh && bash scripts/install.sh > logs/install-dev.log &
-```
+## 📊 Statistics
 
-- PROD
+Pull requests are welcome — help us expand the dataset collection! 🚀
 
-```bash
-# see installation logs in logs/install.log
-$ nohup bash scripts/install.sh > logs/install.log &
-``` -->
-
-<!-- Statistics begins -->
-## Statistics
 |   idx |  source  |     dataset     |   n_nodes |   n_feats |     n_edges |   n_clusters |
 |------:|:--------:|:---------------:|----------:|----------:|------------:|-------------:|
 |     1 |   pyg    |      cora       |     2,708 |     1,433 |      10,556 |            7 |
@@ -119,10 +118,20 @@ $ nohup bash scripts/install.sh > logs/install.log &
 |    59 | critical |    chameleon    |       890 |     2,325 |      17,708 |            5 |
 <!-- Statistics ends -->
 
-## Requirements
+---
 
-See [requirements-dev.txt](./requirements-dev.txt), [requirements.txt](./requirements.txt) and [pyproject.toml:dependencies](./pyproject.toml).
+## ⚙️ Requirements
 
-## Contributing
+Dependencies are listed in:
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md).
+* [requirements.txt](./requirements.txt)
+* [requirements-dev.txt](./requirements-dev.txt)
+* [pyproject.toml](./pyproject.toml) (see `dependencies`)
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please check the [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
+
+---

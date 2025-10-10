@@ -71,7 +71,7 @@ def tab_printer(
         table.set_cols_dtype(cols_dtype)
     table.add_rows(params)
 
-    logger.info(f"\n{table.draw()}")
+    logger.info("%s", f"\n{table.draw()}")
 
     return table.draw()
 

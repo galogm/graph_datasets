@@ -1,7 +1,7 @@
 """Datasets from the paper `LINKX <https://github.com/CUAI/Non-Homophily-Large-Scale>`_.
 """
 
-# pylint:disable=invalid-name,duplicate-code
+# pylint:disable=invalid-name,duplicate-code,too-many-branches
 import os
 from typing import Tuple
 
@@ -49,7 +49,7 @@ def even_quantile_labels(vals, n_classes, verbosity: int = 0):
     if verbosity and verbosity > 1:
         logger.info("Generated Class Label Intervals:")
         for class_idx, interval in enumerate(interval_lst):
-            logger.info(f"Class {class_idx}: [{interval[0]}, {interval[1]})]")
+            logger.info("%s", f"Class {class_idx}: [{interval[0]}, {interval[1]})]")
     return label
 
 
@@ -138,6 +138,8 @@ def load_linkx_data(
             directory=directory,
             verbosity=verbosity,
         )
+    else:
+        raise ValueError(f"{dataset_name} in  LINKX not supported.")
 
     if verbosity and verbosity > 1:
         print_dataset_info(
@@ -284,9 +286,8 @@ def load_twitch_gamers_data(
     one_hot = {k: v for v, k in enumerate(nodes["language"].unique())}
     nodes["language"] = [one_hot[lang] for lang in nodes["language"]]
 
-    if task is not None:
-        label = torch.tensor(nodes[task].to_numpy())
-        features = torch.tensor(nodes.drop(task, axis=1).to_numpy(), dtype=torch.float)
+    label = torch.tensor(nodes[task].to_numpy())
+    features = torch.tensor(nodes.drop(task, axis=1).to_numpy(), dtype=torch.float)
 
     if normalize:
         features = features - features.mean(dim=0, keepdim=True)

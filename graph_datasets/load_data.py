@@ -1,7 +1,7 @@
 """Load Graph Datasets
 """
 
-# pylint:disable=protected-access
+# pylint:disable=protected-access,too-many-locals,too-many-branches,too-many-statements,
 import ssl
 from typing import Tuple, Union
 
@@ -188,8 +188,12 @@ def load_data(
     graph.directed = not to_simple
 
     if verbosity:
+        dm = (
+            f"{source.upper()} undirected {dataset_name}\n"
+            f"add_self_loop={add_self_loop} rm_self_loop={rm_self_loop}"
+        )
         print_dataset_info(
-            dataset_name=f"{source.upper()} undirected {dataset_name}\n  add_self_loop={add_self_loop} rm_self_loop={rm_self_loop}",
+            dataset_name=dm,
             n_nodes=graph.num_nodes(),
             n_edges=graph.num_edges(),
             n_feats=graph.ndata["feat"].shape[1],

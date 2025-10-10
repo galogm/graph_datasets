@@ -1,6 +1,7 @@
 """Datasets from `OGB <https://github.com/snap-stanford/ogb>`_.
 """
 
+# pylint: disable=invalid-name,
 import traceback
 from typing import Tuple
 
@@ -59,7 +60,7 @@ def load_ogb_data(
 
     try:
         splits = dataset.get_idx_split()
-    except Exception as _:
+    except RuntimeError as _:
         traceback.print_exc()
         splits = None
 
@@ -98,7 +99,7 @@ def load_ogb_data(
 def to_sparse_tensor(edge_index, edge_feat, num_nodes):
     """converts the edge_index into SparseTensor"""
     num_edges = edge_index.size(1)
-    (row, col), N, E = edge_index, num_nodes, num_edges
+    (row, col), N, _ = edge_index, num_nodes, num_edges
     perm = (col * N + row).argsort()
     row, col = row[perm], col[perm]
     value = edge_feat[perm]

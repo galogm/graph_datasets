@@ -4,8 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "graph_datasets"
-version = "1.0.2"
-authors = [{ name = "galo.gm", email = "galo.gm.work@gmail.com" }]
+version = "1.0.3"
+authors = [{ name = "ming", email = "gumingwork@gmail.com" }]
 keywords = ["graph", "datasets"]
 description = "Load graph datasets."
 readme = "README.md"
@@ -29,6 +29,7 @@ dependencies = [
     "wget>=3.2",
     "texttable>=1.6",
     "pandas>=2.0.3",
+    "colorlog",
 ]
 
 [project.urls]
@@ -75,16 +76,15 @@ prerelease_token = "rc"
 prerelease = false
 
 [tool.semantic_release.changelog]
-changelog_file = "CHANGELOG.md"
 exclude_commit_patterns = []
 mode = "update"
 # insertion_flag = "<!-- version list -->"
-# template_dir = "templates"
+# template_dir = ""
 
-# [tool.semantic_release.changelog.default_templates]
-# changelog_file = "CHANGELOG.md"
-# output_format = "md"
-# mask_initial_release = true
+[tool.semantic_release.changelog.default_templates]
+changelog_file = "CHANGELOG.md"
+output_format = "md"
+mask_initial_release = true
 
 [tool.semantic_release.changelog.environment]
 block_start_string = "{%"

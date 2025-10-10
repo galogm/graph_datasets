@@ -1,6 +1,10 @@
 # CHANGELOG
 
+## v1.0.0 (2025-10-10)
 
+### Features
+
+- Add logging and update formatter, semantic-release ([`2db91c3`](https://github.com/galogm/graph_datasets/commit/2db91c37e8273ef14e3945ecea90c365ff757cd2))
 
 ## v0.14.1 (2025-02-12)
 

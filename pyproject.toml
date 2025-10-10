@@ -55,8 +55,11 @@ version_variables = [
     "docs/conf.py:release",
 ]
 version_toml = ["pyproject.toml:project.version"]
-major_on_zero = false
+allow_zero_version = false
+
+[tool.semantic_release.changelog.default_templates]
 changelog_file = "CHANGELOG.md"
+output_format = "md"
 
 [tool.isort]
 profile = "black"

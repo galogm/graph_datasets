@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.1.1 (2025-10-10)
+
+### Bug Fixes
+
+- No Changelog in workflow
+  ([`b0a45b3`](https://github.com/galogm/graph_datasets/commit/b0a45b3b1e1fb8f20c914cc4fe7a97fad355476f))
+
+
 ## v1.0.1 (2025-10-10)
 
 ### Chore

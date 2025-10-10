@@ -1,5 +1,7 @@
 # CHANGELOG
 
+<!-- version list -->
+
 ## v1.0.1 (2025-10-10)
 
 ### Chore
